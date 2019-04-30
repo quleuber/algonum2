@@ -1,0 +1,2 @@
+     k flag   ciclos     iter        tempo            res          normx
+  1050    0        0     2258          0.6     9.0289e-07        27.3699 

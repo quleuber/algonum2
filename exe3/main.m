@@ -6,16 +6,29 @@ function write_resvec(file, vc)
     endfor
 endfunction
 
+% Parâmetros
 
 args = argv();
 
 strMethod = args{1};
-strFilename   = args{2};
+strMatFilename   = args{2};
 
-[folder, name] = fileparts(strFilename)  % print
-matpath = [folder "/" name];
+[folder, name] = fileparts(strMatFilename);
+matpath = [folder filesep name]  % print
 
-load(strFilename);
+pathParts = strsplit(matpath, "/");
+if pathParts{1} == "matrizes"
+    pathParts = pathParts(2:end);
+endif
+
+matpath = fullfile(pathParts{:});
+outfd = fullfile("saida", matpath);
+mkdir(outfd);
+
+
+% Carrega matriz
+
+load(strMatFilename);
 
 A = Problem.A;
 n = rows(A)  % print
@@ -25,10 +38,7 @@ TOL = 1e-6;
 RTOL = 1e-6;
 MAXIT = 10000;
 
-X_HI = []
-
-outfd = ["saida/" matpath];
-mkdir(outfd);
+X_HI = [];
 
 filenameInfo = fullfile(outfd, "info.txt");
 fileInfo = fopen(filenameInfo, "w");
@@ -44,20 +54,23 @@ fprintf(fileInfo, "%6s %4s %8s %8s %12s %14s %14s\n",
 );
 
 function [M1, M2] = pre_nope(A)
-    return
+    M1 = [];
+    M2 = [];
 endfunction
 
 function [M1, M2] = pre_icc0(A)
     opts.type = "nofill";
-    L = ichol(A,opts);
+    L = ichol(A, opts);
     M1 = L;
+    M2 = [];
 endfunction
 
 function [M1, M2] = pre_iccn(A)
     opts.type = "crout";
     opts.droptol = 1e-4;
-    L = ichol(A,opts);
+    L = ichol(A, opts);
     M1 = L;
+    M2 = [];
 endfunction
 
 
@@ -68,15 +81,24 @@ if strcmp(strMethod, "pcg") == 1
         @pre_iccn, "iccn", "ICC" ;
     };
 
+    legs = metodos(:,3);
     vecs = {};
 
     for i = 1 : rows(metodos)
+        metodo = metodos{i,1};
+        nomeMetodo = metodos{i,2};
+
+        % min(min(A))
 
         tic;
-        [x,flag,relres,iter,resvec] = pcg(A, b, TOL, MAXIT);
+        [M1, M2] = metodo(A);
+        [x,flag,relres,iter,resvec] = pcg(A, b, TOL, MAXIT, M1, M2);
         elapsed = toc;    
 
-        filename = fullfile(outfd, "resvec.dat");
+        vecs{1, i} = 1 : length(resvec);
+        vecs{2, i} = resvec;
+
+        filename = fullfile(outfd, ["resvec." nomeMetodo ".dat"]);
 
         file = fopen(filename, "w");
         write_resvec(file, resvec);
@@ -93,6 +115,7 @@ if strcmp(strMethod, "pcg") == 1
 
     endfor
 
+    size(vecs)
 
     title(name);
     semilogy(vecs{:});
@@ -103,8 +126,8 @@ if strcmp(strMethod, "pcg") == 1
 
     grava_grafico(fullfile(outfd, "resvec.plot"));
 
-    plot(resvec);
-    pause;
+    % plot(resvec);
+    % pause;
 
 
 elseif strcmp(strMethod, "gmres") == 1
