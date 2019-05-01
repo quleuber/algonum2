@@ -6,7 +6,10 @@ MAXIT = 10000;
 
 X_HI = 200;
 
-GMRES_K.Ragusa18 = 10;
+% GMRES_K.Ragusa18 = 10;
+GMRES_K.bfwa62 = 5;
+GMRES_K.lung2 = 2000;
+GMRES_K.olm2000 = 50;
 
 function write_resvec(file, vc)
     for i = 1 : length(vc)
@@ -109,7 +112,7 @@ if strcmp(strMethod, "pcg") == 1
         tic;
         [M1, M2] = metodo(A);
         [x,flag,relres,iter,resvec] = pcg(A, b, TOL, MAXIT, M1, M2);
-        elapsed = toc;    
+        elapsed = toc;
 
         vecs{1, i} = 1 : length(resvec);
         vecs{2, i} = resvec;
@@ -131,8 +134,8 @@ if strcmp(strMethod, "pcg") == 1
 
     endfor
 
-    title(name);
     semilogy(vecs{:});
+    title(name);
     legend(legs{:});
     if X_HI
         axis([0 X_HI]);
@@ -163,10 +166,10 @@ elseif strcmp(strMethod, "gmres") == 1
 
         tic;
         [M1, M2] = metodo(A);
-        [x,flag,relres,iter,resvec] = gmres(A, b, k, RTOL, MAXIT);
+        [x,flag,relres,iter,resvec] = gmres(A, b, k, RTOL, MAXIT, M1, M2);
         elapsed = toc;
 
-        legs{i} = ['k = ' num2str(k)];
+        % legs{i} = ['k = ' num2str(k)];
         vecs{1,i} = 1 : length(resvec);
         vecs{2,i} = resvec;
     
@@ -188,8 +191,8 @@ elseif strcmp(strMethod, "gmres") == 1
         % pause;
     endfor
 
-    title(name);
     semilogy(vecs{:});
+    title([name " - k = " num2str(k)]);
     legend(legs{:});
     if X_HI
         axis([0 X_HI]);
