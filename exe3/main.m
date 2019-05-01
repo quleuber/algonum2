@@ -1,5 +1,13 @@
 graphics_toolkit gnuplot; 
 
+TOL = 1e-6;
+RTOL = 1e-6;
+MAXIT = 10000;
+
+X_HI = 200;
+
+GMRES_K.Ragusa18 = 10;
+
 function write_resvec(file, vc)
     for i = 1 : length(vc)
         fprintf(file, "%d %.8f\n", i, vc(i));
@@ -34,12 +42,6 @@ A = Problem.A;
 n = rows(A)  % print
 b = A * ones(n,1);
 
-TOL = 1e-6;
-RTOL = 1e-6;
-MAXIT = 10000;
-
-X_HI = [];
-
 filenameInfo = fullfile(outfd, "info.txt");
 fileInfo = fopen(filenameInfo, "w");
 
@@ -66,13 +68,27 @@ function [M1, M2] = pre_icc0(A)
 endfunction
 
 function [M1, M2] = pre_iccn(A)
-    opts.type = "crout";
+    opts.type = "ict";
     opts.droptol = 1e-4;
     L = ichol(A, opts);
     M1 = L;
     M2 = [];
 endfunction
 
+function [M1, M2] = pre_ilu0(A)
+    opts.type = "nofill";
+    [L, U] = ilu(A, opts);
+    M1 = L;
+    M2 = U;
+endfunction
+
+function [M1, M2] = pre_ilun(A)
+    opts.type = "crout";
+    opts.droptol = 1e-4;
+    [L, U] = ilu(A, opts);
+    M1 = L;
+    M2 = U;
+endfunction
 
 if strcmp(strMethod, "pcg") == 1
     metodos = {
@@ -115,8 +131,6 @@ if strcmp(strMethod, "pcg") == 1
 
     endfor
 
-    size(vecs)
-
     title(name);
     semilogy(vecs{:});
     legend(legs{:});
@@ -131,14 +145,24 @@ if strcmp(strMethod, "pcg") == 1
 
 
 elseif strcmp(strMethod, "gmres") == 1
-    % ks = make_ks(n)
-    ks = {K}
+    metodos = {
+        @pre_nope, "orig", "Original";
+        @pre_ilu0, "ilu0", "ILU(O)";
+        @pre_ilun, "ilun", "ILU" ;
+    };
 
-    legs = {};
+    name
+    k = GMRES_K.(name)
+
+    legs = metodos(:,3);
     vecs = {};
-    for i = 1 : length(ks)  % k = ks
-        k = ks(i)
+
+    for i = 1 : rows(metodos)
+        metodo = metodos{i,1};
+        nomeMetodo = metodos{i,2};
+
         tic;
+        [M1, M2] = metodo(A);
         [x,flag,relres,iter,resvec] = gmres(A, b, k, RTOL, MAXIT);
         elapsed = toc;
 
@@ -160,8 +184,8 @@ elseif strcmp(strMethod, "gmres") == 1
         % fprintf(fileInfo, "%7d ", );
         fprintf(fileInfo, "\n");
 
-        plot(resvec);
-        pause;
+        % plot(resvec);
+        % pause;
     endfor
 
     title(name);
