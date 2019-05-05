@@ -5,6 +5,7 @@ function xs = fillcell(n, x)
     xs = cellfun(@(blah) x, xs, 'UniformOutput', false);
 end
 
+NAME = "ex";
 N = 50;
 A = 0;
 B = 1;
@@ -102,9 +103,9 @@ leg = ["sol"; leg];
 
 %%%%%
 
+mkdir("saida/");
+
 plot(testPLot{:});
 legend(leg{:});
 title(["n = ", num2str(N)]);
-grava_grafico(["teste-" num2str(N)], "png");
-
-
+grava_grafico(["saida/" NAME "-vals-" num2str(N)], "png");
