@@ -18,13 +18,14 @@ N = 10;
 A = 0;
 B = 1;
 
-NS = [10 100 1000 10000];
+NS = [10 50 100];
 
 %%%%% PROBLEMAS %%%%%
 
 problemas = {};
 
 p1.nome = "ex1";
+p1.ns = NS;
 
 p1.tipo_a = 1;
 p1.ua     = -1;
@@ -43,6 +44,7 @@ p1.gamma_b = [];
 problemas = [problemas, p1];
 
 p2.nome = "ex2";
+p2.ns = NS;
 
 p2.tipo_a = 2;
 p2.ua     = [];
@@ -61,6 +63,7 @@ p2.gamma_b = [];
 problemas = [problemas, p2];
 
 p3.nome = "ex3";
+p3.ns = NS;
 
 p3.tipo_a = 1;
 p3.ua     = -1;
@@ -80,15 +83,15 @@ problemas = [problemas, p3];
 
 %%%%%
 
-for n = NS
+for p = problemas
+    p = p{:};
     data = {};
     leg = {};
 
-    for p = problemas
-        p = p{:};
+    for n = p.ns
         [x, u] = solve(A, B, n, p);
         data = [data, {x; u;}];
-        leg = [leg; p.nome];
+        leg = [leg; ["k = " num2str(n)]];
     endfor
 
     numData = size(data)(2);
@@ -103,7 +106,6 @@ for n = NS
 
     plot(testPLot{:});
     legend(leg{:});
-    title(["n = ", num2str(n)]);
-    grava_grafico(["saida/" NAME "-vals-" num2str(n)], "png");
-
+    title(p.nome);
+    grava_grafico(["saida/" p.nome "-sol"], "png");
 endfor
