@@ -128,29 +128,34 @@ p4.gamma_b = [];
 problemas = [problemas, p4];
 
 
-p5.nome = "resfriador";
 p5.ns = NS;
 
 p5.a = 0;
 p5.b = 1;
 
+cref = 0.0001;
+cref = 0.001;
+cref = 0.01;
+cref = 0.1;
+p5.nome = ["resfriador-" num2str(cref)];
+
 p5.funcs.p = @(x)  0;
-p5.funcs.q = @(x)  -1/100;
-p5.funcs.r = @(x)  -1/5;
+p5.funcs.q = @(x)  -20200*cref;
+p5.funcs.r = @(x)  -1414000;
 
 p5.tipo_a = 1;
-p5.ua     = 40;
+p5.ua     = 160;
 p5.sigma_a = [];
 p5.alfa_a  = [];
 p5.beta_a  = [];
 p5.gamma_a = [];
 
-p5.tipo_b = 1;
+p5.tipo_b = 3;
 p5.ub = 200;
 p5.sigma_b = [];
-p5.alfa_b  = [];
-p5.beta_b  = [];
-p5.gamma_b = [];
+p5.alfa_b  = 0.001;
+p5.beta_b  = cref;
+p5.gamma_b = 70*cref;
 
 problemas = [problemas, p5];
 
