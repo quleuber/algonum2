@@ -124,6 +124,9 @@ for i = 1 : size(data)(2)
     p = polyfit(hs, errs, 1);
     fiterrs = polyval(p, hs);
 
+    slope = p(1)
+    % leg{i} = [leg{i} " - a = " num2str(slope)]
+
     hnlr1 = plot(hs, errs,    [colors{i} 'x'], 'LineWidth', 2); hold on;
     hdlr2 = plot(hs, fiterrs, [colors{i} '-'], 'LineWidth', 2); hold on;
 
