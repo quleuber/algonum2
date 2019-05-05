@@ -1,111 +1,112 @@
 graphics_toolkit gnuplot;
+mkdir("saida/");
 
 function xs = fillcell(n, x)
     xs = cell(1, n);
     xs = cellfun(@(blah) x, xs, 'UniformOutput', false);
 end
 
+function [x, u] = solve(A, B, N, p)
+    [x, u] = pvc(A, B, N,
+        p.tipo_a,p.ua,p.sigma_a,p.alfa_a,p.beta_a,p.gamma_a,
+        p.tipo_b,p.ub,p.sigma_b,p.alfa_b,p.beta_b,p.gamma_b
+    );
+end
+
 NAME = "ex";
-N = 50;
+N = 10;
 A = 0;
 B = 1;
 
-data = {};
-leg = {};
+NS = [10 100 1000 10000];
 
 %%%%%
 
-data = {};
+problemas = {};
 
-tipo_a = 1;
-ua     = -1;
-sigma_a = [];
-alfa_a  = [];
-beta_a  = [];
-gamma_a = [];
+p1.nome = "ex1";
 
-tipo_b = 1;
-ub = 1;
-sigma_b = [];
-alfa_b  = [];
-beta_b  = [];
-gamma_b = [];
+p1.tipo_a = 1;
+p1.ua     = -1;
+p1.sigma_a = [];
+p1.alfa_a  = [];
+p1.beta_a  = [];
+p1.gamma_a = [];
 
-[x, u] = pvc(A, B, N,
-    tipo_a,ua,sigma_a,alfa_a,beta_a,gamma_a,
-    tipo_b,ub,sigma_b,alfa_b,beta_b,gamma_b
-);
+p1.tipo_b = 1;
+p1.ub = 1;
+p1.sigma_b = [];
+p1.alfa_b  = [];
+p1.beta_b  = [];
+p1.gamma_b = [];
 
-data = [data, {x; u;}];
-leg = [leg; num2str(1)];
+problemas = [problemas, p1];
 
-%%%%%%
+p2.nome = "ex2";
 
-tipo_a = 2;
-ua     = [];
-sigma_a = 1;
-alfa_a  = [];
-beta_a  = [];
-gamma_a = [];
+p2.tipo_a = 2;
+p2.ua     = [];
+p2.sigma_a = 1;
+p2.alfa_a  = [];
+p2.beta_a  = [];
+p2.gamma_a = [];
 
-tipo_b = 1;
-ub = 1;
-sigma_b = [];
-alfa_b  = [];
-beta_b  = [];
-gamma_b = [];
+p2.tipo_b = 1;
+p2.ub = 1;
+p2.sigma_b = [];
+p2.alfa_b  = [];
+p2.beta_b  = [];
+p2.gamma_b = [];
 
+problemas = [problemas, p2];
 
-[x, u] = pvc(A, B, N,
-    tipo_a,ua,sigma_a,alfa_a,beta_a,gamma_a,
-    tipo_b,ub,sigma_b,alfa_b,beta_b,gamma_b
-);
+p3.nome = "ex3";
 
-data = [data, {x; u;}];
-leg = [leg; num2str(2)];
+p3.tipo_a = 1;
+p3.ua     = -1;
+p3.sigma_a = [];
+p3.alfa_a  = [];
+p3.beta_a  = [];
+p3.gamma_a = [];
+
+p3.tipo_b = 3;
+p3.ub = [];
+p3.sigma_b = [];
+p3.alfa_b  = -1;
+p3.beta_b  = 2;
+p3.gamma_b = -1;
+
+problemas = [problemas, p3];
 
 %%%
 
-tipo_a = 1;
-ua     = -1;
-sigma_a = [];
-alfa_a  = [];
-beta_a  = [];
-gamma_a = [];
+for n = NS
+    data = {};
+    leg = {};
 
-tipo_b = 3;
-ub = [];
-sigma_b = [];
-alfa_b  = -1;
-beta_b  = 2;
-gamma_b = -1;
+    for p = problemas
+        p = p{:};
+        [x, u] = solve(A, B, n, p);
+        data = [data, {x; u;}];
+        leg = [leg; p.nome];
+    endfor
+
+    numData = size(data)(2);
+    linStyle = '--';
+    testPLot = [data; fillcell(numData, '--')];
+
+    f = @(x) x^2 + x - 1;
+    xs = linspace(A, B, n)';
+    ys = arrayfun(f, xs);
+    testPLot = [{xs; ys; '-'}, testPLot];
+    leg = ["sol"; leg];
+
+    plot(testPLot{:});
+    legend(leg{:});
+    title(["n = ", num2str(n)]);
+    grava_grafico(["saida/" NAME "-vals-" num2str(n)], "png");
 
 
-[x, u] = pvc(A, B, N,
-    tipo_a,ua,sigma_a,alfa_a,beta_a,gamma_a,
-    tipo_b,ub,sigma_b,alfa_b,beta_b,gamma_b
-);
-
-data = [data, {x; u;}];
-leg = [leg; num2str(3)];
-
-%%%%%
-
-numData = size(data)(2);
-linStyle = '--';
-testPLot = [data; fillcell(numData, '--')];
-
-f = @(x) x^2 + x - 1;
-xs = linspace(A, B, N)';
-ys = arrayfun(f, xs);
-testPLot = [{xs; ys; '-'}, testPLot];
-leg = ["sol"; leg];
-
-%%%%%
-
-mkdir("saida/");
-
-plot(testPLot{:});
-legend(leg{:});
-title(["n = ", num2str(N)]);
-grava_grafico(["saida/" NAME "-vals-" num2str(N)], "png");
+    errs = data(2,:);
+    errs = cellfun(@(er) norm(er - ys, inf), errs);
+endfor
