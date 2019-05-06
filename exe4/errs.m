@@ -92,8 +92,8 @@ for p = problemas
         [x, u] = solve(A, B, n, p);
 
         f = @(x) x^2 + x - 1;
-        xs = linspace(A, B, n)';
-        u_exa = arrayfun(f, xs);
+        % xs = linspace(A, B, n)';
+        u_exa = arrayfun(f, x);
         err = u - u_exa;
         err = norm(err, inf);
         h = (B-A)/(n-1);
@@ -124,8 +124,10 @@ for i = 1 : size(data)(2)
     p = polyfit(hs, errs, 1);
     fiterrs = polyval(p, hs);
 
-    slope = p(1)
+    slope = p(1);
     % leg{i} = [leg{i} " - a = " num2str(slope)]
+
+    printf("%s %f\n", leg{i}, slope);
 
     hnlr1 = plot(hs, errs,    [colors{i} 'x'], 'LineWidth', 2); hold on;
     hdlr2 = plot(hs, fiterrs, [colors{i} '-'], 'LineWidth', 2); hold on;
