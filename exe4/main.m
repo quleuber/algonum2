@@ -27,6 +27,7 @@ FUNCS.r = @(x)  x^2 +1/2;
 
 problemas = {};
 
+
 p1.nome = "ex1";
 p1.ns = NS;
 
@@ -128,36 +129,41 @@ p4.gamma_b = [];
 problemas = [problemas, p4];
 
 
-p5.ns = NS;
+CREFS = [0.1 0.01 0.001 0.0001];
 
-p5.a = 0;
-p5.b = 1;
+for i = 1 : length(CREFS)
+    cref = CREFS(i);
+    p.ns = NS;
 
-cref = 0.0001;
-cref = 0.001;
-cref = 0.01;
-cref = 0.1;
-p5.nome = ["resfriador-" num2str(cref)];
+    p.a = 0;
+    p.b = 1;
 
-p5.funcs.p = @(x)  0;
-p5.funcs.q = @(x)  -20200*cref;
-p5.funcs.r = @(x)  -1414000;
+    p.nome = ["resfriador-" strrep(num2str(cref), ".", "-")];
 
-p5.tipo_a = 1;
-p5.ua     = 160;
-p5.sigma_a = [];
-p5.alfa_a  = [];
-p5.beta_a  = [];
-p5.gamma_a = [];
+    p.funcs.p = @(x)  0;
+    p.funcs.q = @(x)  -20200*cref;
+    p.funcs.r = @(x)  -1414000;
 
-p5.tipo_b = 3;
-p5.ub = 200;
-p5.sigma_b = [];
-p5.alfa_b  = 0.001;
-p5.beta_b  = cref;
-p5.gamma_b = 70*cref;
+    % p.funcs.p = @(x)  0;
+    % p.funcs.q = @(x)  - 20.2 * cref;
+    % p.funcs.r = @(x)  - 1414;
 
-problemas = [problemas, p5];
+    p.tipo_a = 1;
+    p.ua     = 160;
+    p.sigma_a = [];
+    p.alfa_a  = [];
+    p.beta_a  = [];
+    p.gamma_a = [];
+
+    p.tipo_b = 3;
+    p.ub = 200;
+    p.sigma_b = [];
+    p.alfa_b  = 0.001;
+    p.beta_b  = cref;
+    p.gamma_b = 70*cref;
+
+    problemas = [problemas, p];
+endfor
 
 %%%%%
 
@@ -174,10 +180,14 @@ for p = problemas
 
     numData = size(data)(2);
     linStyle = '--';
-    plotData = [data; fillcell(numData, '--')];
+    plotData = data;
+    plotData = [plotData; fillcell(numData, '--')];
+    plotData = [plotData; fillcell(numData, 'LineWidth')];
+    plotData = [plotData; fillcell(numData, 2)];
 
     plot(plotData{:});
     legend(leg{:});
     title(p.nome);
+    grava_grafico(["saida/" p.nome "-sol"]);
     grava_grafico(["saida/" p.nome "-sol"], "png");
 endfor
