@@ -23,7 +23,7 @@ NS = [10 100 1000 2000];
 
 problemas = {};
 
-p1.nome = "ex1";
+p1.nome = "1";
 
 p1.tipo_a = 1;
 p1.ua     = -1;
@@ -41,7 +41,7 @@ p1.gamma_b = [];
 
 problemas = [problemas, p1];
 
-p2.nome = "ex2";
+p2.nome = "2";
 
 p2.tipo_a = 2;
 p2.ua     = [];
@@ -59,7 +59,7 @@ p2.gamma_b = [];
 
 problemas = [problemas, p2];
 
-p3.nome = "ex3";
+p3.nome = "3";
 
 p3.tipo_a = 1;
 p3.ua     = -1;
@@ -132,7 +132,7 @@ for i = 1 : size(data)(2)
     hnlr1 = plot(hs, errs,    [colors{i} 'x'], 'LineWidth', 2); hold on;
     hdlr2 = plot(hs, fiterrs, [colors{i} '-'], 'LineWidth', 2); hold on;
 
-    handlers = [handlers, hdlr2];
+    handlers = [handlers, hnlr1];
 
     % plotData = [plotData, {hs; errs;    'x'; 'LineWidth'; 2}];
     % plotData = [plotData, {hs; fiterrs; '-'; 'LineWidth'; 2}];
