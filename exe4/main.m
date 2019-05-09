@@ -50,7 +50,7 @@ p1.alfa_b  = [];
 p1.beta_b  = [];
 p1.gamma_b = [];
 
-problemas = [problemas, p1];
+problemas(end+1) = p1;
 
 p2.nome = "ex2";
 p2.ns = NS;
@@ -74,7 +74,7 @@ p2.alfa_b  = [];
 p2.beta_b  = [];
 p2.gamma_b = [];
 
-problemas = [problemas, p2];
+problemas(end+1) = p2;
 
 p3.nome = "ex3";
 p3.ns = NS;
@@ -98,7 +98,7 @@ p3.alfa_b  = -1;
 p3.beta_b  = 2;
 p3.gamma_b = -1;
 
-problemas = [problemas, p3];
+problemas(end+1) = p3;
 
 %%%%%
 
@@ -126,10 +126,14 @@ p4.alfa_b  = [];
 p4.beta_b  = [];
 p4.gamma_b = [];
 
-problemas = [problemas, p4];
+problemas(end+1) = p4;
 
 
 CREFS = [0.1 0.01 0.001 0.0001];
+K = 0.001;
+uref = 70;
+W = 10;
+T = 0.1;
 
 for i = 1 : length(CREFS)
     cref = CREFS(i);
@@ -140,10 +144,15 @@ for i = 1 : length(CREFS)
 
     p.nome = ["resfriador-" strrep(num2str(cref), ".", "-")];
 
-    p.funcs.p = @(x)  0;
-    p.funcs.q = @(x)  -20200*cref;
-    p.funcs.r = @(x)  -1414000;
+    C = (2*W + 2*T)/T/W * cref
+    f = C * uref
 
+    p.funcs.p = @(x)  0;
+    p.funcs.q = @(x)  - C / K;
+    p.funcs.r = @(x)  - f / K;
+
+    % -20200 * cref;
+    % -1414000;
     % p.funcs.p = @(x)  0;
     % p.funcs.q = @(x)  - 20.2 * cref;
     % p.funcs.r = @(x)  - 1414;
