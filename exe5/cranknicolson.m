@@ -34,11 +34,16 @@ lambda = Kappa*dt/(2*h*h);
 
 for k = 1:npassos-1
 
+    % Valor prescrito
     A(1,1) = 1;
+    A(1,2) = 0;
     A(n,n) = 1;
+    A(n,n-1) = 0;
 
     B(1,1) = 1;
+    B(1,2) = 0;
     B(n,n) = 1;
+    B(n,n-1) = 0;
 
     for i = 2:(n-1)
         A(i,i-1) = -lambda;

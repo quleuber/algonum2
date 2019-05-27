@@ -26,16 +26,14 @@ A = zeros (n,n);
 b = zeros (n,1);
 
 u(1,1) = 100;
-u(n,1) = 50;
+%u(n,1) = 50;
 
 lambda = Kappa*dt/(h*h);
 
 for k = 1:npassos-1
-
-    % u(1,k+1) = 100;
-    % u(n,k+1) = 50;
     
     A(1,1) = 1;
+    A(1,2) = 0;
     % A(n,n) = 1;
     
     b(1) = 100;

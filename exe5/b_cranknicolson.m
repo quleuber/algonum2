@@ -50,9 +50,13 @@ for k = 1:npassos-1
         B(i,i+1) = lambda;
     end
 
-    % an  -> an + cn 
-    A(n,n) = (1 + lambda)
-    B(n,n) = (1 - lambda)
+    % Condição de contorno de fluxo prescrito
+    % an  -> an + cn
+    A(n,n-1) = -(lambda/2); 
+    A(n,n) = (1 + lambda/2);
+
+    B(n,n-1) = (lambda/2);
+    B(n,n) = (1 - lambda/2);
 
     b = B*u(:,k);
 
