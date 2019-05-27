@@ -43,6 +43,14 @@ for k = 1:npassos-1
 
     u(n,k+1) = u(n,k) + lambda * (u(n-1,k) - u(n,k)); % Condição de contorno de fluxo prescrito
 
+    % Caso o algoritmo tenha atingido a tolerância desejada
+    % if(norm(u(:,k+1) - u(:,k),Inf) <= tol)
+    %     estac = k+1;
+    %     u(:,k+1);
+    %     printf("t = %d\n",estac);
+    %     break;
+    % end
+
 end
 
 plot(x,u(:,1),x,u(:,2),x,u(:,5),x,u(:,npassos))
