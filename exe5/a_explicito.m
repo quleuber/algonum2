@@ -1,4 +1,4 @@
-function [x,u] = explicito(n,dt,npassos,suffix="")
+function [x,u] = a_explicito(n,dt,npassos,suffix="")
 #
 # Função para solução de um problema de valor inicial unidimensional
 # n: número de pontos
@@ -42,6 +42,9 @@ for k = 1:npassos-1
     end
 
 end
+
+inc = (u(n,npassos) - u(n-1,npassos)) / h;
+inc
 
 plot(x,u(:,1),x,u(:,2),x,u(:,5),x,u(:,npassos))
 legend('0','20','50','100')

@@ -1,4 +1,4 @@
-function [x,u] = implicito(n,dt,npassos,suffix="")
+function [x,u] = a_implicito(n,dt,npassos,suffix="")
 #
 # Função para solução de um problema de valor inicial unidimensional
 # n: número de pontos
@@ -56,6 +56,9 @@ for k = 1:npassos-1
     u(:,k+1) = sol;
 
 end
+
+inc = (u(n,npassos) - u(n-1,npassos)) / h;
+inc
 
 %plot(x,u(:,1),x,u(:,10))
 %legend('t=0.0','t=1.0')

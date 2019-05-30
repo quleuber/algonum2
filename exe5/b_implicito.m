@@ -57,6 +57,9 @@ for k = 1:npassos-1
 
 end
 
+inc = (u(n,npassos) - u(n-1,npassos)) / h;
+inc
+
 %plot(x,u(:,1),x,u(:,10))
 %legend('t=0.0','t=1.0')
 

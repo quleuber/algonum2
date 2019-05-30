@@ -7,7 +7,7 @@ fexplicito = @b_explicito;
 fimplicito = @b_implicito;
 fcranknicolson = @b_cranknicolson;
 
-N = 11;
+N = 101;
 PASSOS = 200;
 
 # explicito
