@@ -1,4 +1,4 @@
-function [x,u] = explicito(n,dt,npassos,suffix="")
+function [x,u] = b_explicito(n,dt,npassos,suffix="",tol)
 #
 # Função para solução de um problema de valor inicial unidimensional
 # n: número de pontos
@@ -51,6 +51,12 @@ for k = 1:npassos-1
     %     break;
     % end
 
+    result = u(:,k+1);
+    est = k+1;
+    if( norm(u(:,k+1)-u(:,k), inf) <= tol )
+        printf("Parou na iteração: %d\n", est);
+        break;
+    endif
 end
 
 inc = (u(n,npassos) - u(n-1,npassos)) / h;
@@ -62,6 +68,19 @@ legend('0','20','50','100')
 %plot(x,u(:,1),x,u(:,10),x,u(:,20),x,u(:,30),x,u(:,40),x,u(:,50),x,u(:,60),x,u(:,npassos))
 %legend('t=0.0','t=1.0','t=2.0','t=3.0','t=4.0','t=5.0','t=6.0','sol. estacionária')
 
+plot(x,u(:,1),x,u(:,10),x,u(:,20),x,u(:,30),x,u(:,40),x,u(:,50),x,u(:,60),x,u(:,npassos));
+legend(
+    sprintf("t=%g", dt * 00),
+    sprintf("t=%g", dt * 10),
+    sprintf("t=%g", dt * 20),
+    sprintf("t=%g", dt * 30),
+    sprintf("t=%g", dt * 40),
+    sprintf("t=%g", dt * 50),
+    sprintf("t=%g", dt * 60),
+    sprintf("t = dt * %d", est)
+    %'t = npassos*dt'
+);
+
 name = ["2_explicito" suffix];
-title(name);
+title(strrep(name, "_", " "));
 grava_grafico(["saida/" name], tipo='png');

@@ -1,4 +1,4 @@
-function [x,u] = b_cranknicolson(n,dt,npassos,suffix="",tol)
+function [x,u] = c_cranknicolson(n,dt,npassos,suffix="", tol)
 #
 # Função para solução de um problema de valor inicial unidimensional
 # n: número de pontos
@@ -26,9 +26,8 @@ A = zeros (n,n);
 B = zeros (n,n);
 b = zeros (n,1);
 
-%u = zeros(n,npassos);
 u(1,1) = 100;
-u(n,1) = 50;
+%u(n,1) = 50;
 
 lambda = Kappa*dt/(2*h*h);
 
@@ -58,7 +57,7 @@ for k = 1:npassos-1
     B(n,n-1) = (lambda/2);
     B(n,n) = (1 - lambda/2);
 
-    b = B*u(:,k);
+    b = B*u(:,k) + [0; ones(n-2,1); 0;] * dt;
 
     u(:,k+1) = A\b;
 
@@ -76,10 +75,16 @@ inc
 %plot(x,u(:,1),x,u(:,10))
 %legend('t=0.0','t=1.0')
 
-% plot(x,u(:,1),x,u(:,10),x,u(:,20),x,u(:,30),x,u(:,40),x,u(:,50),x,u(:,60),x,u(:,npassos));
-% legend('t=0.0','t=1.0','t=2.0','t=3.0','t=4.0','t=5.0','t=6.0','t=npassos*dt')
-
-plot(x,u(:,1),x,u(:,10),x,u(:,20),x,u(:,30),x,u(:,40),x,u(:,50),x,u(:,60),x,u(:,npassos));
+plot(
+    x,u(:,01),
+    x,u(:,10),
+    x,u(:,20),
+    x,u(:,30),
+    x,u(:,40),
+    x,u(:,50),
+    x,u(:,60),
+    x, result %u(:,npassos)
+);
 legend(
     sprintf("t=%g", dt * 00),
     sprintf("t=%g", dt * 10),
@@ -89,9 +94,9 @@ legend(
     sprintf("t=%g", dt * 50),
     sprintf("t=%g", dt * 60),
     sprintf("t = dt * %d", est)
-    %'t = npassos*dt'
+    % 't = npassos*dt'
 );
 
-name = ["2_cranknicolson" suffix];
+name = ["3_cranknicolson" suffix];
 title(strrep(name, "_", " "));
 grava_grafico(["saida/" name], tipo='png');
