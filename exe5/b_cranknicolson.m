@@ -28,7 +28,7 @@ b = zeros (n,1);
 
 %u = zeros(n,npassos);
 u(1,1) = 100;
-u(n,1) = 50;
+%u(n,1) = 50;
 
 lambda = Kappa*dt/(2*h*h);
 

@@ -3,9 +3,9 @@ graphics_toolkit gnuplot;
 dxs = [1 0.1 0.01];
 
 Kappa = 0.835;
-fexplicito =     @c_explicito;
-fimplicito =     @c_implicito;
-fcranknicolson = @c_cranknicolson;
+fexplicito =     @b_explicito;
+fimplicito =     @b_implicito;
+fcranknicolson = @b_cranknicolson;
 
 N = 101;
 PASSOS = 500;
