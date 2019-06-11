@@ -1,4 +1,4 @@
-function [A,B] = monta_pvc(prob, n, m)
+function [A,B] = monta_pvc_old(prob, n, m)
     kappa   = prob.kappa;
     beta_x  = prob.beta_x;
     beta_y  = prob.beta_y;
@@ -20,6 +20,7 @@ function [A,B] = monta_pvc(prob, n, m)
     hx = (b_b - b_a) / (n - 1);
     hy = (b_d - b_c) / (m - 1);
 
+    % TODO colocar funções do problema em x,y
     _a = @(i) 2 * kappa * (hx^-2 + hy^-2) + gamma(i);
     _b = @(i) -kappa * (hx^-2) - beta_x(i) / (2*hx);
     _c = @(i) -kappa * (hx^-2) + beta_x(i) / (2*hx);

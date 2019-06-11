@@ -2,6 +2,8 @@ function [lista, mapa] = problemas()
     lista = cell();
     mapa = struct();
 
+    simples.name = "simples";
+
     simples.kappa  = 1;
     simples.beta_x = @(x,y) 0;
     simples.beta_y = @(x,y) 0;
@@ -20,6 +22,7 @@ function [lista, mapa] = problemas()
     simples.d = 1;
 
     lista(end+1) = mapa.simples = simples;
+
 
     solcon.kappa  = 1;
     solcon.beta_x = @(x,y) 0;
