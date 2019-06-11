@@ -21,10 +21,10 @@
     A = 1; \
     R  = VAL;
 
-#define COND_XD  PRESC(1000)
-#define COND_XU  PRESC(1000)
-#define COND_YD  PRESC(2000)
-#define COND_YU  PRESC(2000)
+#define COND_XD  PRESC(5)
+#define COND_XU  PRESC(5)
+#define COND_YD  PRESC(5)
+#define COND_YU  PRESC(5)
 
 #define COND_YD_XD  COND_YD
 #define COND_YD_XU  COND_YD

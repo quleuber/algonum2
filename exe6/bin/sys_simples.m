@@ -57,7 +57,7 @@ y = ( 0 );
 % 1
     
     mA(i, i  ) = 1; 
-    vR(i)  = 2000;
+    vR(i)  = 5;
 
 for j = 2 : n-1
     
@@ -67,7 +67,7 @@ for j = 2 : n-1
     % 2
             
     mA(i, i  ) = 1; 
-    vR(i)  = 2000;
+    vR(i)  = 5;
     
 endfor
 
@@ -80,7 +80,7 @@ endfor
 % 3
     
     mA(i, i  ) = 1; 
-    vR(i)  = 2000;
+    vR(i)  = 5;
 
 for ln = 2 : m-1
     
@@ -91,7 +91,7 @@ for ln = 2 : m-1
     % 4
             
     mA(i, i  ) = 1; 
-    vR(i)  = 1000;
+    vR(i)  = 5;
     
     for j = 2 : n-1
         
@@ -114,7 +114,7 @@ for ln = 2 : m-1
     % 6
             
     mA(i, i  ) = 1; 
-    vR(i)  = 1000;
+    vR(i)  = 5;
     
 endfor
 
@@ -128,7 +128,7 @@ endfor
 % 7
     
     mA(i, i  ) = 1; 
-    vR(i)  = 2000;
+    vR(i)  = 5;
 
 
 for j = 2 : n-1
@@ -139,7 +139,7 @@ for j = 2 : n-1
     % 8
             
     mA(i, i  ) = 1; 
-    vR(i)  = 2000;
+    vR(i)  = 5;
     
 endfor
 
@@ -151,7 +151,7 @@ endfor
 % 9
     
     mA(i, i  ) = 1; 
-    vR(i)  = 2000;
+    vR(i)  = 5;
 
 toc;
 
