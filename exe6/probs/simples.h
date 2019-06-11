@@ -2,11 +2,16 @@
 #define NAME simples
 
 # Usa variáveis x e y
-#define KAPPA   1
-#define BETA_X  0
-#define BETA_Y  0
-#define GAMMA   0
-#define F       5
+#define KAPPA   ( 1 )
+#define BETA_X  ( 0 )
+#define BETA_Y  ( 0 )
+#define GAMMA   ( 0 )
+#define F       ( 5 )
+
+#define B_A  ( 0 )
+#define B_B  ( 1 )
+#define B_C  ( 0 )
+#define B_D  ( 1 )
 
 #   e
 # b a c
