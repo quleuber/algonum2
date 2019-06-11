@@ -1,4 +1,4 @@
-function [mA,vR] = monta_pvc(prob, n, m)
+function [mA,vR] = monta_pvc_cond(prob, n, m)
     kappa   = prob.kappa;
     beta_x  = prob.beta_x;
     beta_y  = prob.beta_y;
@@ -19,13 +19,6 @@ function [mA,vR] = monta_pvc(prob, n, m)
 
     hx = (b_b - b_a) / (n - 1);
     hy = (b_d - b_c) / (m - 1);
-
-    # % TODO colocar funções do problema em x,y
-    # _a = @(i) 2 * kappa * (hx^-2 + hy^-2) + gamma(i);
-    # _b = @(i) -kappa * (hx^-2) - beta_x(i) / (2*hx);
-    # _c = @(i) -kappa * (hx^-2) + beta_x(i) / (2*hx);
-    # _d = @(i) -kappa * (hy^-2) - beta_y(i) / (2*hy);
-    # _e = @(i) -kappa * (hy^-2) + beta_y(i) / (2*hy);
 
     mA = sparse(num, num);
     vR = zeros(num, 1);
@@ -82,42 +75,62 @@ function [mA,vR] = monta_pvc(prob, n, m)
     x = b_a;
     y = b_c;
 
-    % 1
-    _R
-    _A
-    _E
-    _C
+    #include prob_1.h
 
+
+    % 1
+    #ifdef COND_YD_XD
+        COND_YD_XD
+    #else
+        _R
+        _A
+        _E
+        _C
+    #endif
 
     for j = 2 : n-1
         INC_PT
 
         % 2
-        _R
-        _A
-        _E
-        _C
-        _B
+        #ifdef COND_YD
+            COND_YD
+        #else
+            _R
+            _A
+            _E
+            _C
+            _B
+        #endif
+
     endfor
+
 
 
     INC_PT
 
     % 3
-    _R
-    _A
-    _E
-    _B
+    #ifdef COND_YD_XU
+        COND_YD_XU
+    #else
+        _R
+        _A
+        _E
+        _B
+    #endif
 
     for ln = 2 : m-1
         INC_LN
 
         % 4
-        _R
-        _A
-        _D
-        _E
-        _C
+        #ifdef COND_XD
+            COND_XD
+        #else
+            _R
+            _A
+            _D
+            _E
+            _C
+        #endif
 
         for j = 2 : n-1
             INC_PT
@@ -134,41 +147,62 @@ function [mA,vR] = monta_pvc(prob, n, m)
         INC_PT
     
         % 6
-        _R
-        _A
-        _D
-        _E
-        _B
+        #ifdef COND_XU
+            COND_XU
+        #else
+            _R
+            _A
+            _D
+            _E
+            _B
+        #endif
 
     endfor
+
+
 
     INC_LN
 
     % 7
-    _R
-    _A
-    _D
-    _C
+    #ifdef COND_YU_XD
+        COND_YU_XD
+    #else
+        _R
+        _A
+        _D
+        _C
+    #endif
 
 
     for j = 2 : n-1
         INC_PT
 
         % 8
-        _R
-        _A
-        _D
-        _C
-        _B
+        #ifdef COND_YU
+            COND_YU
+        #else
+            _R
+            _A
+            _D
+            _C
+            _B
+        #endif
+
     endfor
 
 
     INC_PT
 
     % 9
-    _R
-    _A
-    _D
-    _B
+    #ifdef COND_YU_XU
+        COND_YU_XU
+    #else
+        _R
+        _A
+        _D
+        _B
+    #endif
+
+
 
 endfunction

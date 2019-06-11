@@ -32,7 +32,7 @@ for d = 1 : length(DIMS)
     N = n * m
 
     tic
-    [A,B] = monta_pvc(prob, n, m);
+    [A,B] = monta_pvc_cond(prob, n, m);
     toc
     save("-binary", filename(prob.name, "sys", n, m), "A", "B");
 

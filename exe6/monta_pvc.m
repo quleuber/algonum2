@@ -1,4 +1,4 @@
-function [mA,vB] = monta_pvc(prob, n, m)
+function [mA,vR] = monta_pvc(prob, n, m)
     kappa   = prob.kappa;
     beta_x  = prob.beta_x;
     beta_y  = prob.beta_y;
@@ -28,17 +28,22 @@ function [mA,vB] = monta_pvc(prob, n, m)
     # _e = @(i) -kappa * (hy^-2) + beta_y(i) / (2*hy);
 
     mA = sparse(num, num);
-    vB = zeros(num, 1);
+    vR = zeros(num, 1);
 
-                
+    _2hx  = (2*hx);
+    _2hy  = (2*hy);
+    _hx2i = (hx^(-2));
+    _hy2i = (hy^(-2));
+
                     
                     
+                        
                     
     
         
-    #   -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));
-    # -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx)); 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y); -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));
-    #   -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));
+    #   e
+    # b a c
+    #   d
 
     # 7 8 9
     # 4 5 6
@@ -49,10 +54,10 @@ function [mA,vB] = monta_pvc(prob, n, m)
     y = b_c;
 
     % 1
-    vB(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-    mA(i, i+n) = -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));;
-    mA(i, i+1) = -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));;
+    vR(i) = f(x,y);
+    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+    mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
+    mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
 
 
     for j = 2 : n-1
@@ -61,11 +66,11 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
         % 2
-        vB(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-        mA(i, i+n) = -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));;
-        mA(i, i+1) = -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));;
-        mA(i, i-1) = -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx));;
+        vR(i) = f(x,y);
+        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+        mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
+        mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
+        mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
     endfor
 
 
@@ -74,10 +79,10 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
     % 3
-    vB(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-    mA(i, i+n) = -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));;
-    mA(i, i-1) = -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx));;
+    vR(i) = f(x,y);
+    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+    mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
+    mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
 
     for ln = 2 : m-1
         
@@ -86,11 +91,11 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
         % 4
-        vB(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-        mA(i, i-n) = -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));;
-        mA(i, i+n) = -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));;
-        mA(i, i+1) = -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));;
+        vR(i) = f(x,y);
+        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+        mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
+        mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
+        mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
 
         for j = 2 : n-1
             
@@ -98,12 +103,12 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
             % 5
-            vB(i) = f(x,y);
-            mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-            mA(i, i-n) = -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));;
-            mA(i, i+n) = -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));;
-            mA(i, i+1) = -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));;
-            mA(i, i-1) = -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx));;
+            vR(i) = f(x,y);
+            mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+            mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
+            mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
+            mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
+            mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
         endfor
 
         
@@ -111,11 +116,11 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
     
         % 6
-        vB(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-        mA(i, i-n) = -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));;
-        mA(i, i+n) = -kappa * ((hy^(-2))) + beta_y(x,y) / ((2*hy));;
-        mA(i, i-1) = -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx));;
+        vR(i) = f(x,y);
+        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+        mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
+        mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
+        mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
 
     endfor
 
@@ -125,10 +130,10 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
     % 7
-    vB(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-    mA(i, i-n) = -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));;
-    mA(i, i+1) = -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));;
+    vR(i) = f(x,y);
+    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+    mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
+    mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
 
 
     for j = 2 : n-1
@@ -137,11 +142,11 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
         % 8
-        vB(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-        mA(i, i-n) = -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));;
-        mA(i, i+1) = -kappa * ((hx^(-2))) + beta_x(x,y) / ((2*hx));;
-        mA(i, i-1) = -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx));;
+        vR(i) = f(x,y);
+        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+        mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
+        mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
+        mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
     endfor
 
 
@@ -150,10 +155,9 @@ function [mA,vB] = monta_pvc(prob, n, m)
         i = i + 1;
 
     % 9
-    vB(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * ((hx^(-2)) + (hy^(-2))) + gamma(x,y);;
-    mA(i, i-n) = -kappa * ((hy^(-2))) - beta_y(x,y) / ((2*hy));;
-    mA(i, i-1) = -kappa * ((hx^(-2))) - beta_x(x,y) / ((2*hx));;
-
+    vR(i) = f(x,y);
+    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
+    mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
+    mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
 
 endfunction
