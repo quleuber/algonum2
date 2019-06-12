@@ -1,3 +1,4 @@
+#include "conds.h"
 
 #define NAME simples
 
@@ -12,14 +13,6 @@
 #define B_B  ( 1 )
 #define B_C  ( 0 )
 #define B_D  ( 1 )
-
-#   e
-# b a c
-#   d
-
-#define PRESC(VAL) \
-    A = 1; \
-    R  = VAL;
 
 #define COND_XD  PRESC(5)
 #define COND_XU  PRESC(5)

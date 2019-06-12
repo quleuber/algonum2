@@ -1,13 +1,14 @@
 
-name = "NAME"
-
 args = argv();
 if length(args) < 2
-    printf("executável de montagem do sistema precisa de 2 argumentos")
+    printf("executável de montagem do sistema precisa de 2 parâmetros");
+    exit(1);
 endif
 
 n = str2num(args{1});
 m = str2num(args{2});
+
+name = "NAME"
 
 num = n * m;
 num
@@ -25,20 +26,14 @@ _2hy  = (2*hy);
 _hx2i = (hx^(-2));
 _hy2i = (hy^(-2));
 
-#define ID  A(i, i-n)
-#define IB  A(i, i-1)
-#define IA  A(i, i)  
-#define IC  A(i, i+1)
-#define IE  A(i, i+n)
-
 #define Ai  2 * KAPPA * (_hx2i + _hy2i) + GAMMA
 #define Bi  -KAPPA * (_hx2i) - BETA_X / (_2hx)
 #define Ci  -KAPPA * (_hx2i) + BETA_X / (_2hx)
 #define Di  -KAPPA * (_hy2i) - BETA_Y / (_2hy)
 #define Ei  -KAPPA * (_hy2i) + BETA_Y / (_2hy)
 
-#define B  mA(i, i-1)
 #define D  mA(i, i-n)
+#define B  mA(i, i-1)
 #define A  mA(i, i  )
 #define C  mA(i, i+1)
 #define E  mA(i, i+n)
@@ -200,7 +195,7 @@ INC_PT
 toc;
 
 function filename = filename(name, tag, n, m)
-    filename = [ "dados/" name "_" tag "_" num2str(n) "_" num2str(m) ];
+    filename = [ "dados/" name "_" num2str(n) "_" num2str(m) "_" tag ];
 endfunction
 
 save("-binary", filename(name, "sys", n, m), "mA", "vR");

@@ -6,7 +6,7 @@
 
 
 
-name = "simples"
+name = "conhecido"
 
 args = argv();
 if length(args) < 2
@@ -52,7 +52,7 @@ y = ( 0 );
 % 1
     
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
 
 for j = 2 : n-1
     
@@ -62,7 +62,7 @@ for j = 2 : n-1
     % 2
             
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
     
 endfor
 
@@ -75,7 +75,7 @@ endfor
 % 3
     
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
 
 for ln = 2 : m-1
     
@@ -86,7 +86,7 @@ for ln = 2 : m-1
     % 4
             
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
     
     for j = 2 : n-1
         
@@ -94,12 +94,12 @@ for ln = 2 : m-1
     i = i + 1;
 
         % 5
-        vR(i) = ( 5 );
-        mA(i, i  ) = 2 * ( 1 ) * (_hx2i + _hy2i) + ( 0 );
-        mA(i, i-n) = -( 1 ) * (_hy2i) - ( 0 ) / (_2hy);
-        mA(i, i+n) = -( 1 ) * (_hy2i) + ( 0 ) / (_2hy);
-        mA(i, i+1) = -( 1 ) * (_hx2i) + ( 0 ) / (_2hx);
-        mA(i, i-1) = -( 1 ) * (_hx2i) - ( 0 ) / (_2hx);
+        vR(i) = ( 000 );
+        mA(i, i  ) = 2 * ( 1 ) * (_hx2i + _hy2i) + ( 1 );
+        mA(i, i-n) = -( 1 ) * (_hy2i) - ( 20 * y ) / (_2hy);
+        mA(i, i+n) = -( 1 ) * (_hy2i) + ( 20 * y ) / (_2hy);
+        mA(i, i+1) = -( 1 ) * (_hx2i) + ( 1 ) / (_2hx);
+        mA(i, i-1) = -( 1 ) * (_hx2i) - ( 1 ) / (_2hx);
     endfor
 
     
@@ -109,7 +109,7 @@ for ln = 2 : m-1
     % 6
             
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
     
 endfor
 
@@ -123,7 +123,7 @@ endfor
 % 7
     
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
 
 
 for j = 2 : n-1
@@ -134,7 +134,7 @@ for j = 2 : n-1
     % 8
             
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
     
 endfor
 
@@ -146,7 +146,7 @@ endfor
 % 9
     
     mA(i, i  ) = 1; 
-    vR(i)  = 5;
+    vR(i)  = 0;
 
 toc;
 
