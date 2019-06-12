@@ -11,7 +11,7 @@ DIMS=(
 )
 
 NAMES=(
-    # simples
+    simples
     conhecido
 )
 

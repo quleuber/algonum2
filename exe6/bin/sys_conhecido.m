@@ -6,15 +6,16 @@
 
 
 
-name = "conhecido"
-
 args = argv();
 if length(args) < 2
-    printf("executável de montagem do sistema precisa de 2 argumentos")
+    printf("executável de montagem do sistema precisa de 2 parâmetros");
+    exit(1);
 endif
 
 n = str2num(args{1});
 m = str2num(args{2});
+
+name = "conhecido"
 
 num = n * m;
 num
@@ -151,7 +152,7 @@ endfor
 toc;
 
 function filename = filename(name, tag, n, m)
-    filename = [ "dados/" name "_" tag "_" num2str(n) "_" num2str(m) ];
+    filename = [ "dados/" name "_" num2str(n) "_" num2str(m) "_" tag ];
 endfunction
 
 save("-binary", filename(name, "sys", n, m), "mA", "vR");
