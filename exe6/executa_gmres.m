@@ -33,6 +33,11 @@ t
 outname = [outfd "/" name "_gmres"]
 
 save("-binary", outname,
-    "x", "flag", "relres", "iter", "resvec",
-    "t"
+    "x", "flag", "relres", "iter", "resvec"
+    % ,"t"
 );
+
+txtfile = [outname ".txt"];
+fh = fopen(txtfile, "w");
+fprintf(fh, "t = %f\n", t);
+fclose(fh);
