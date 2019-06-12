@@ -13,7 +13,7 @@ DIMS=(
 
 NAMES=(
     "simples"
-    "conhecido"
+    # "conhecido"
 )
 
 PUEUE_ENABLE=
