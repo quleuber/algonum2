@@ -7,7 +7,7 @@
 #define BETA_X  ( 0 )
 #define BETA_Y  ( 0 )
 #define GAMMA   ( 0 )
-#define F       ( 5 )
+#define F       ( 0 )
 
 #define B_A  ( 0 )
 #define B_B  ( 1 )
