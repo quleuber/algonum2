@@ -8,12 +8,15 @@
 
 args = argv();
 if length(args) < 2
-    printf("executável de montagem do sistema precisa de 2 parâmetros");
+    printf("executável de montagem do sistema precisa de 2 parâmetrosn");
     exit(1);
 endif
 
 n = str2num(args{1});
 m = str2num(args{2});
+
+outfd = "dados";
+mkdir(outfd);
 
 name = "conhecido"
 
@@ -151,8 +154,6 @@ endfor
 
 toc;
 
-function filename = filename(name, tag, n, m)
-    filename = [ "dados/" name "_" num2str(n) "_" num2str(m) "_" tag ];
-endfunction
+filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 
-save("-binary", filename(name, "sys", n, m), "mA", "vR");
+save("-binary", filename, "mA", "vR");
