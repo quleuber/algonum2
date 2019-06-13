@@ -2,7 +2,10 @@
 
 #define NAME conhecido
 
-# Usa variáveis x e y
+#define RESTART []
+#define MAXIT   1000
+#define TOL     1e-6
+
 #define KAPPA   ( 1 )
 #define BETA_X  ( 1 )
 #define BETA_Y  ( 20 * y )

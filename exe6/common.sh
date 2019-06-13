@@ -12,8 +12,8 @@ DIMS=(
 )
 
 NAMES=(
-    "simples"
-    # "conhecido"
+    # "simples"
+    "conhecido"
 )
 
 PUEUE_ENABLE=

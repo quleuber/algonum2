@@ -2,6 +2,10 @@
 
 #define NAME simples
 
+#define RESTART []
+#define MAXIT   1000
+#define TOL     1e-6
+
 # Usa variáveis x e y
 #define KAPPA   ( 1 )
 #define BETA_X  ( 0 )
