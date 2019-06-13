@@ -41,3 +41,5 @@ txtfile = [outname ".txt"];
 fh = fopen(txtfile, "w");
 fprintf(fh, "t = %f\n", t);
 fclose(fh);
+
+fprintf("\n\n");
