@@ -155,6 +155,11 @@ endfor
 
 toc;
 
+b_a = ( 0 );
+b_b = ( 1 );
+b_c = ( 0 );
+b_d = ( 1 );
+
 filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 
-save("-binary", filename, "mA", "vR");
+save("-binary", filename, "mA", "vR", "b_a", "b_b", "b_c", "b_d");

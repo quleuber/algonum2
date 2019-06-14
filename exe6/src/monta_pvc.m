@@ -197,6 +197,11 @@ INC_PT
 
 toc;
 
+b_a = B_A;
+b_b = B_B;
+b_c = B_C;
+b_d = B_D;
+
 filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 
-save("-binary", filename, "mA", "vR");
+save("-binary", filename, "mA", "vR", "b_a", "b_b", "b_c", "b_d");

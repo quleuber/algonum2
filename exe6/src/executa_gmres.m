@@ -35,6 +35,7 @@ save("-binary", outname,
     "x", "flag", "relres", "iter", "resvec"
     % ,"t"
     , "name", "n", "m"
+    , "b_a", "b_b", "b_c", "b_d"  % vem do arquivo de dados
 );
 
 txtfile = [outname ".txt"];
