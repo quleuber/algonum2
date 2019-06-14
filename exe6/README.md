@@ -5,7 +5,7 @@
 
 ## Build
 ```
-make
+make -B
 ```
 
 ## Execução

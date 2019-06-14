@@ -28,7 +28,7 @@ infile = ["dados/" name "_sys" ];
 load(infile);
 
 tic;
-[x, flag, relres, iter, resvec] = gmres(mA, vR, [], 1e-6, 1000);
+[u, flag, relres, iter, resvec] = gmres(mA, vR, [], 1e-6, 1000);
 t = toc;
 
 flag
@@ -39,7 +39,7 @@ t
 outname = [outfd "/" name "_gmres"]
 
 save("-binary", outname,
-    "x", "flag", "relres", "iter", "resvec"
+    "u", "flag", "relres", "iter", "resvec"
     % ,"t"
     , "name", "n", "m"
     , "b_a", "b_b", "b_c", "b_d"  % vem do arquivo de dados
