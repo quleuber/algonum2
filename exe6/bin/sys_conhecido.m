@@ -6,6 +6,12 @@
 
 
 
+
+
+
+
+
+
 args = argv();
 if length(args) < 2
     printf("executável de montagem do sistema precisa de 2 parâmetrosn");
@@ -58,6 +64,7 @@ y = ( 0 );
     mA(i, i  ) = 1; 
     vR(i)  = 0;
 
+
 for j = 2 : n-1
     
     x = x + hx; 
@@ -67,7 +74,8 @@ for j = 2 : n-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 0;
-    
+        
+
 endfor
 
 
@@ -81,6 +89,7 @@ endfor
     mA(i, i  ) = 1; 
     vR(i)  = 0;
 
+
 for ln = 2 : m-1
     
     x = ( 0 ); 
@@ -91,7 +100,8 @@ for ln = 2 : m-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 0;
-    
+        
+
     for j = 2 : n-1
         
     x = x + hx; 
@@ -99,11 +109,11 @@ for ln = 2 : m-1
 
         % 5
         vR(i) = ( -(202.5*x - 202.5)*x^8.0*(y - 1)*y*e^(x^4.5) + (45.0*x - 45.0)*x^4.5*(y - 1)*y*e^(x^4.5) - (247.5*x - 247.5)*x^3.5*(y - 1)*y*e^(x^4.5) - 90.0*x^4.5*(y - 1)*y*e^(x^4.5) + 10*(x - 1)*x*(y - 1)*y*e^(x^4.5) + 10*(x - 1)*(y - 1)*y*e^(x^4.5) + 10*x*(y - 1)*y*e^(x^4.5) - 20*(x - 1)*x*e^(x^4.5) - 20*(y - 1)*y*e^(x^4.5) + 200*((x - 1)*x*(y - 1)*e^(x^4.5) + (x - 1)*x*y*e^(x^4.5))*y );
-        mA(i, i  ) = 2 * ( 1 ) * (_hx2i + _hy2i) + ( 1 );
-        mA(i, i-n) = -( 1 ) * (_hy2i) - ( 20 * y ) / (_2hy);
-        mA(i, i+n) = -( 1 ) * (_hy2i) + ( 20 * y ) / (_2hy);
-        mA(i, i+1) = -( 1 ) * (_hx2i) + ( 1 ) / (_2hx);
-        mA(i, i-1) = -( 1 ) * (_hx2i) - ( 1 ) / (_2hx);
+        mA(i, i  ) = (2 * ( 1 ) * (_hx2i + _hy2i) + ( 1 ));
+        mA(i, i-n) = (-( 1 ) * (_hy2i) - ( 20 * y ) / (_2hy));
+        mA(i, i+n) = (-( 1 ) * (_hy2i) + ( 20 * y ) / (_2hy));
+        mA(i, i+1) = (-( 1 ) * (_hx2i) + ( 1 ) / (_2hx));
+        mA(i, i-1) = (-( 1 ) * (_hx2i) - ( 1 ) / (_2hx));
     endfor
 
     
@@ -114,7 +124,8 @@ for ln = 2 : m-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 0;
-    
+        
+
 endfor
 
 
@@ -130,6 +141,7 @@ endfor
     vR(i)  = 0;
 
 
+
 for j = 2 : n-1
     
     x = x + hx; 
@@ -139,7 +151,8 @@ for j = 2 : n-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 0;
-    
+        
+
 endfor
 
 
@@ -151,6 +164,7 @@ endfor
     
     mA(i, i  ) = 1; 
     vR(i)  = 0;
+
 
 toc;
 

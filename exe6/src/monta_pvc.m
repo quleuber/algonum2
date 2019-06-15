@@ -29,11 +29,11 @@ _2hy  = (2*hy);
 _hx2i = (hx^(-2));
 _hy2i = (hy^(-2));
 
-#define Ai  2 * KAPPA * (_hx2i + _hy2i) + GAMMA
-#define Bi  -KAPPA * (_hx2i) - BETA_X / (_2hx)
-#define Ci  -KAPPA * (_hx2i) + BETA_X / (_2hx)
-#define Di  -KAPPA * (_hy2i) - BETA_Y / (_2hy)
-#define Ei  -KAPPA * (_hy2i) + BETA_Y / (_2hy)
+#define Ai  (2 * KAPPA * (_hx2i + _hy2i) + GAMMA)
+#define Bi  (-KAPPA * (_hx2i) - BETA_X / (_2hx))
+#define Ci  (-KAPPA * (_hx2i) + BETA_X / (_2hx))
+#define Di  (-KAPPA * (_hy2i) - BETA_Y / (_2hy))
+#define Ei  (-KAPPA * (_hy2i) + BETA_Y / (_2hy))
 
 #define D  mA(i, i-n)
 #define B  mA(i, i-1)
@@ -71,21 +71,22 @@ x = B_A;
 y = B_C;
 
 % 1
-#ifdef COND_YD_XD
-    COND_YD_XD
+#ifdef REPLC_YD_XD
+    REPLC_YD_XD
 #else
     _R
     _A
     _E
     _C
 #endif
+AFTER_YD_XD
 
 for j = 2 : n-1
     INC_PT
 
     % 2
-    #ifdef COND_YD
-        COND_YD
+    #ifdef REPLC_YD
+        REPLC_YD
     #else
         _R
         _A
@@ -93,6 +94,7 @@ for j = 2 : n-1
         _C
         _B
     #endif
+    AFTER_YD
 
 endfor
 
@@ -101,21 +103,22 @@ endfor
 INC_PT
 
 % 3
-#ifdef COND_YD_XU
-    COND_YD_XU
+#ifdef REPLC_YD_XU
+    REPLC_YD_XU
 #else
     _R
     _A
     _E
     _B
 #endif
+AFTER_YD_XU
 
 for ln = 2 : m-1
     INC_LN
 
     % 4
-    #ifdef COND_XD
-        COND_XD
+    #ifdef REPLC_XD
+        REPLC_XD
     #else
         _R
         _A
@@ -123,6 +126,7 @@ for ln = 2 : m-1
         _E
         _C
     #endif
+    AFTER_XD
 
     for j = 2 : n-1
         INC_PT
@@ -139,8 +143,8 @@ for ln = 2 : m-1
     INC_PT
 
     % 6
-    #ifdef COND_XU
-        COND_XU
+    #ifdef REPLC_XU
+        REPLC_XU
     #else
         _R
         _A
@@ -148,6 +152,7 @@ for ln = 2 : m-1
         _E
         _B
     #endif
+    AFTER_XU
 
 endfor
 
@@ -156,22 +161,23 @@ endfor
 INC_LN
 
 % 7
-#ifdef COND_YU_XD
-    COND_YU_XD
+#ifdef REPLC_YU_XD
+    REPLC_YU_XD
 #else
     _R
     _A
     _D
     _C
 #endif
+AFTER_YU_XD
 
 
 for j = 2 : n-1
     INC_PT
 
     % 8
-    #ifdef COND_YU
-        COND_YU
+    #ifdef REPLC_YU
+        REPLC_YU
     #else
         _R
         _A
@@ -179,6 +185,7 @@ for j = 2 : n-1
         _C
         _B
     #endif
+    AFTER_YU
 
 endfor
 
@@ -186,14 +193,15 @@ endfor
 INC_PT
 
 % 9
-#ifdef COND_YU_XU
-    COND_YU_XU
+#ifdef REPLC_YU_XU
+    REPLC_YU_XU
 #else
     _R
     _A
     _D
     _B
 #endif
+AFTER_YU_XU
 
 toc;
 

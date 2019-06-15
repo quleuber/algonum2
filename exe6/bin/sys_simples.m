@@ -2,6 +2,12 @@
 
 
 
+
+
+
+
+
+
 # Usa variáveis x e y
 
 
@@ -59,6 +65,7 @@ y = ( 0 );
     mA(i, i  ) = 1; 
     vR(i)  = 5;
 
+
 for j = 2 : n-1
     
     x = x + hx; 
@@ -68,7 +75,8 @@ for j = 2 : n-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 5;
-    
+        
+
 endfor
 
 
@@ -82,6 +90,7 @@ endfor
     mA(i, i  ) = 1; 
     vR(i)  = 5;
 
+
 for ln = 2 : m-1
     
     x = ( 0 ); 
@@ -92,7 +101,8 @@ for ln = 2 : m-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 5;
-    
+        
+
     for j = 2 : n-1
         
     x = x + hx; 
@@ -100,11 +110,11 @@ for ln = 2 : m-1
 
         % 5
         vR(i) = ( 0 );
-        mA(i, i  ) = 2 * ( 1 ) * (_hx2i + _hy2i) + ( 0 );
-        mA(i, i-n) = -( 1 ) * (_hy2i) - ( 0 ) / (_2hy);
-        mA(i, i+n) = -( 1 ) * (_hy2i) + ( 0 ) / (_2hy);
-        mA(i, i+1) = -( 1 ) * (_hx2i) + ( 0 ) / (_2hx);
-        mA(i, i-1) = -( 1 ) * (_hx2i) - ( 0 ) / (_2hx);
+        mA(i, i  ) = (2 * ( 1 ) * (_hx2i + _hy2i) + ( 0 ));
+        mA(i, i-n) = (-( 1 ) * (_hy2i) - ( 0 ) / (_2hy));
+        mA(i, i+n) = (-( 1 ) * (_hy2i) + ( 0 ) / (_2hy));
+        mA(i, i+1) = (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx));
+        mA(i, i-1) = (-( 1 ) * (_hx2i) - ( 0 ) / (_2hx));
     endfor
 
     
@@ -115,7 +125,8 @@ for ln = 2 : m-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 5;
-    
+        
+
 endfor
 
 
@@ -131,6 +142,7 @@ endfor
     vR(i)  = 5;
 
 
+
 for j = 2 : n-1
     
     x = x + hx; 
@@ -140,7 +152,8 @@ for j = 2 : n-1
             
     mA(i, i  ) = 1; 
     vR(i)  = 5;
-    
+        
+
 endfor
 
 
@@ -152,6 +165,7 @@ endfor
     
     mA(i, i  ) = 1; 
     vR(i)  = 5;
+
 
 toc;
 

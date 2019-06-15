@@ -6,6 +6,12 @@
 
 
 
+
+
+
+
+
+
 args = argv();
 if length(args) < 2
     printf("executável de resolução por GMRES precisa de 3 parâmetros\n");

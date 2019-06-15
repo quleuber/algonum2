@@ -17,12 +17,12 @@
 #define B_C  ( 0 )
 #define B_D  ( 1 )
 
-#define COND_XD  PRESC(0)
-#define COND_XU  PRESC(0)
-#define COND_YD  PRESC(0)
-#define COND_YU  PRESC(0)
+#define REPLC_XD  PRESC(0)
+#define REPLC_XU  PRESC(0)
+#define REPLC_YD  PRESC(0)
+#define REPLC_YU  PRESC(0)
 
-#define COND_YD_XD  COND_YD
-#define COND_YD_XU  COND_YD
-#define COND_YU_XD  COND_YU
-#define COND_YU_XU  COND_YU
+#define REPLC_YD_XD  REPLC_YD
+#define REPLC_YD_XU  REPLC_YD
+#define REPLC_YU_XD  REPLC_YU
+#define REPLC_YU_XU  REPLC_YU
