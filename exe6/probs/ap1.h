@@ -6,7 +6,8 @@
 #define MAXIT   1000
 #define TOL     1e-6
 
-# Usa variáveis x e y
+#define W   (1)
+
 #define KAPPA   ( 1 )
 #define BETA_X  ( 0 )
 #define BETA_Y  ( 0 )
@@ -17,11 +18,6 @@
 #define B_B  ( 1 )
 #define B_C  ( 0 )
 #define B_D  ( 1 )
-
-# u(x, 0) = 70
-# u(x, W) = 70
-# u(0, y) = 200
-# u(L, y) = c ( u(L, y) - u_ref )
 
 #define REPLC_YD  PRESC(70)
 #define REPLC_YU  PRESC(70)

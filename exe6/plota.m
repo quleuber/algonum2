@@ -1,12 +1,13 @@
 args = argv();
-if length(args) < 1
-    printf("executável de montagem do sistema precisa de 1 parâmetros\n");
+if length(args) < 2
+    printf("executável de plot precisa de 2 parâmetros\n");
     exit(1);
 endif
 
 name = args{1};
+metodo = args{2};
 
-fullname = [ name "_gmres" ];
+fullname = [ name "_" metodo ];
 
 load(["saida/" fullname ]);
 

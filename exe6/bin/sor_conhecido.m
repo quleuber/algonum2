@@ -37,7 +37,7 @@ hy = (( 1 ) - ( 0 )) / (m - 1);
 tic;
 
 u = zeros(num, 1);
-
+oldu = zeros(num, 1);
 
 _2hx  = (2*hx);
 _2hy  = (2*hy);
@@ -58,6 +58,11 @@ _hy2i = (hy^(-2));
 # 7 8 9
 # 4 5 6
 # 1 2 3
+
+
+for iter = 1 : min(num, 1000)
+
+oldu = u;
 
 i = 1;
 x = ( 0 );
@@ -111,6 +116,8 @@ u(i) = (1 - (1)) * u(i)  +  (1) / c_a * ( ( -(202.5*x - 202.5)*x^8.0*(y - 1)*y*e
     - u(i-1) * c_b ...
     - u(i+n) * c_e ...
 );
+
+
 
 for ln = 2 : m-1
     
@@ -230,6 +237,14 @@ u(i) = (1 - (1)) * u(i)  +  (1) / c_a * ( ( -(202.5*x - 202.5)*x^8.0*(y - 1)*y*e
     - u(i-n) * c_d ...
 );
 
+
+if ( norm(u - oldu, inf) <= 1e-6 )
+    break;
+endif
+
+endfor
+
+iter
 t = toc; t
 
 b_a = ( 0 );
@@ -242,7 +257,7 @@ outname = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sor" ];
 save("-binary", outname
     , "name", "n", "m"
     , "b_a", "b_b", "b_c", "b_d"
-    , "u"
+    , "u", "iter"
 );
 
 txtfile = [outname ".txt"];

@@ -9,13 +9,8 @@
 
 
 
-# Usa variáveis x e y
 
 
-# u(x, 0) = 70
-# u(x, W) = 70
-# u(0, y) = 200
-# u(L, y) = c ( u(L, y) - u_ref )
 
 
 

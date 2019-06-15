@@ -22,7 +22,7 @@ hy = (B_D - B_C) / (m - 1);
 tic;
 
 u = zeros(num, 1);
-
+oldu = zeros(num, 1);
 
 _2hx  = (2*hx);
 _2hy  = (2*hy);
@@ -76,6 +76,11 @@ _hy2i = (hy^(-2));
 # 7 8 9
 # 4 5 6
 # 1 2 3
+
+
+for iter = 1 : min(num, MAXIT)
+
+oldu = u;
 
 i = 1;
 x = B_A;
@@ -138,6 +143,8 @@ OPENCALC
     C_B
     C_E
 CLOSECALC
+
+
 
 for ln = 2 : m-1
     INC_LN
@@ -265,6 +272,14 @@ OPENCALC
     C_D
 CLOSECALC
 
+
+if ( norm(u - oldu, inf) <= TOL )
+    break;
+endif
+
+endfor
+
+iter
 t = toc; t
 
 b_a = B_A;
@@ -277,7 +292,7 @@ outname = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sor" ];
 save("-binary", outname
     , "name", "n", "m"
     , "b_a", "b_b", "b_c", "b_d"
-    , "u"
+    , "u", "iter"
 );
 
 txtfile = [outname ".txt"];
