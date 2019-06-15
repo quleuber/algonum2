@@ -10,3 +10,4 @@ build: $(TGS_1)
 bin/sys_%.m: probs/*.h | bin/
 	gpp -I "src" -I "probs" --include "$*.h" "./src/monta_pvc.m" -o "./bin/sys_$*.m"
 	gpp -I "src" -I "probs" --include "$*.h" "./src/executa_gmres.m" -o "./bin/gmres_$*.m"
+	gpp -I "src" -I "probs" --include "$*.h" "./src/sor.m" -o "./bin/sor_$*.m"

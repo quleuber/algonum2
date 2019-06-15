@@ -6,7 +6,8 @@
 #define MAXIT   1000
 #define TOL     1e-6
 
-# Usa variáveis x e y
+#define W   (1)
+
 #define KAPPA   ( 1 )
 #define BETA_X  ( 0 )
 #define BETA_Y  ( 0 )

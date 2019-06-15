@@ -34,8 +34,7 @@ mkdir(outfd);
 name = "ap1"
 
 
-num = n * m;
-num
+num = n * m; num
 
 hx = (( 1 ) - ( 0 )) / (n - 1);
 hy = (( 1 ) - ( 0 )) / (m - 1);
