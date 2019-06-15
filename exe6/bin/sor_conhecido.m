@@ -60,7 +60,7 @@ _hy2i = (hy^(-2));
 # 1 2 3
 
 
-for iter = 1 : min(num, 1000)
+for iter = 1 : min(num, 10000)
 
 oldu = u;
 
