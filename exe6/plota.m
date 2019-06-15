@@ -4,9 +4,11 @@ if length(args) < 1
     exit(1);
 endif
 
-prob = args{1};
+name = args{1};
 
-load(["saida/" prob "_50_50_gmres"]);
+fullname = [ name "_gmres" ];
+
+load(["saida/" fullname ]);
 
 tx = linspace(b_a, b_b, n);
 ty = linspace(b_c, b_d, m);
@@ -14,11 +16,11 @@ ty = linspace(b_c, b_d, m);
 [xx, yy] = meshgrid (tx, ty);
 
 tz = sin (xx) ./ xx;
-
 tz = reshape(u, n, m);
 
 mesh (tx, ty, tz);
+title(strrep(fullname, "_", " "));
 
 plotfd = "plot";
 mkdir(plotfd);
-grava_grafico([plotfd "/" prob "_50_50_gmres"], "png");
+grava_grafico([ plotfd "/" fullname ], "png");

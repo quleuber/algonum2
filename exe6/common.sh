@@ -14,6 +14,7 @@ DIMS=(
 NAMES=(
     "simples"
     "conhecido"
+    "ap1"
 )
 
 PUEUE_ENABLE=1
