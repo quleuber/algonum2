@@ -13,13 +13,14 @@ load(["saida/" fullname ]);
 tx = linspace(b_a, b_b, n);
 ty = linspace(b_c, b_d, m);
 
-[xx, yy] = meshgrid (tx, ty);
+% [xx, yy] = meshgrid(tx, ty);
 
-tz = sin (xx) ./ xx;
-tz = reshape(u, n, m);
+tz = reshape(u, n, m)';
 
 mesh (tx, ty, tz);
 title(strrep(fullname, "_", " "));
+xlabel("x");
+ylabel("y");
 
 plotfd = "plot";
 mkdir(plotfd);

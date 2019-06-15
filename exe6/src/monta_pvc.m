@@ -1,4 +1,3 @@
-
 args = argv();
 if length(args) < 2
     printf("executável de montagem do sistema precisa de 2 parâmetros\n");
@@ -13,13 +12,14 @@ mkdir(outfd);
 
 name = "NAME"
 
-num = n * m;
-num
 
-tic;
+num = n * m; num
 
 hx = (B_B - B_A) / (n - 1);
 hy = (B_D - B_C) / (m - 1);
+
+
+tic;
 
 mA = sparse(num, num);
 vR = zeros(num, 1);
@@ -28,12 +28,6 @@ _2hx  = (2*hx);
 _2hy  = (2*hy);
 _hx2i = (hx^(-2));
 _hy2i = (hy^(-2));
-
-#define Ai  (2 * KAPPA * (_hx2i + _hy2i) + GAMMA)
-#define Bi  (-KAPPA * (_hx2i) - BETA_X / (_2hx))
-#define Ci  (-KAPPA * (_hx2i) + BETA_X / (_2hx))
-#define Di  (-KAPPA * (_hy2i) - BETA_Y / (_2hy))
-#define Ei  (-KAPPA * (_hy2i) + BETA_Y / (_2hy))
 
 #define D  mA(i, i-n)
 #define B  mA(i, i-1)
@@ -51,12 +45,12 @@ _hy2i = (hy^(-2));
 #define _R  R = F;
 
 #define INC_PT \
-    x = x + hx; \
-    i = i + 1;
+    x += hx; \
+    i++;
 #define INC_LN \
     x = B_A; \
-    y = y + hy; \
-    i = i + 1;
+    y += hy; \
+    i++;
 
 #   e
 # b a c

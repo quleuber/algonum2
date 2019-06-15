@@ -8,6 +8,7 @@
 
 
 
+
 # Usa variáveis x e y
 
 
@@ -15,7 +16,6 @@
 # u(x, W) = 70
 # u(0, y) = 200
 # u(L, y) = c ( u(L, y) - u_ref )
-
 
 
 
@@ -33,13 +33,15 @@ mkdir(outfd);
 
 name = "ap1"
 
+
 num = n * m;
 num
 
-tic;
-
 hx = (( 1 ) - ( 0 )) / (n - 1);
 hy = (( 1 ) - ( 0 )) / (m - 1);
+
+
+tic;
 
 mA = sparse(num, num);
 vR = zeros(num, 1);
@@ -48,7 +50,6 @@ _2hx  = (2*hx);
 _2hy  = (2*hy);
 _hx2i = (hx^(-2));
 _hy2i = (hy^(-2));
-
 
 
 
@@ -74,8 +75,8 @@ y = ( 0 );
 
 for j = 2 : n-1
     
-    x = x + hx; 
-    i = i + 1;
+    x += hx; 
+    i++;
 
     % 2
             
@@ -88,8 +89,8 @@ endfor
 
 
 
-    x = x + hx; 
-    i = i + 1;
+    x += hx; 
+    i++;
 
 % 3
     
@@ -100,8 +101,8 @@ endfor
 for ln = 2 : m-1
     
     x = ( 0 ); 
-    y = y + hy; 
-    i = i + 1;
+    y += hy; 
+    i++;
 
     % 4
             
@@ -111,8 +112,8 @@ for ln = 2 : m-1
 
     for j = 2 : n-1
         
-    x = x + hx; 
-    i = i + 1;
+    x += hx; 
+    i++;
 
         % 5
         vR(i) = ( 70 );
@@ -124,8 +125,8 @@ for ln = 2 : m-1
     endfor
 
     
-    x = x + hx; 
-    i = i + 1;
+    x += hx; 
+    i++;
 
     % 6
             vR(i) = ( 70 );
@@ -143,8 +144,8 @@ endfor
 
 
     x = ( 0 ); 
-    y = y + hy; 
-    i = i + 1;
+    y += hy; 
+    i++;
 
 % 7
     
@@ -155,8 +156,8 @@ endfor
 
 for j = 2 : n-1
     
-    x = x + hx; 
-    i = i + 1;
+    x += hx; 
+    i++;
 
     % 8
             
@@ -168,8 +169,8 @@ endfor
 
 
 
-    x = x + hx; 
-    i = i + 1;
+    x += hx; 
+    i++;
 
 % 9
     

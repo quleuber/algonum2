@@ -1,4 +1,4 @@
-#include "conds.h"
+#include "common.h"
 
 #define NAME conhecido
 
