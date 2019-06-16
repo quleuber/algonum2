@@ -175,6 +175,7 @@ endfor
 
 toc;
 
+
 b_a = ( 0 );
 b_b = ( 1 );
 b_c = ( 0 );
@@ -185,9 +186,7 @@ filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 cofs = [vA, vB, vC, vD, vE];
 mA = spdiags(cofs, [0, -1, 1, -n, n] .* -1, num, num)';
 
-% print_system(mA, vR, num);
-
 save("-binary", filename
-    , "mA", "vR"
     , "b_a", "b_b", "b_c", "b_d"
+    , "mA", "vR"
 );

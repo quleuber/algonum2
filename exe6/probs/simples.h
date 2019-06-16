@@ -3,7 +3,7 @@
 #define NAME simples
 
 #define RESTART []
-#define MAXIT   1000
+#define MAXIT   num
 #define TOL     1e-6
 
 #define W   (1)

@@ -135,8 +135,8 @@ for ln = 2 : m-1
         vE(i) = (-( 1 ) * (_hy2i) + ( 0 ) / (_2hy));
         vB(i) = (-( 1 ) * (_hx2i) - ( 0 ) / (_2hx));
         
-    vA(i) += (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx)) *  (1 + hx * ( -1) / (-( 1 ))); 
-    vR(i) -= (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx)) * hy * ( -70) / (-( 1 ));
+    vA(i) += (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx)) * ( 1 - hx * ( -1) / (-( 1 )) ); 
+    vR(i) -= (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx)) * hx * ( -70) / (-( 1 ));
 
 endfor
 
@@ -180,6 +180,7 @@ endfor
 
 toc;
 
+
 b_a = ( 0 );
 b_b = ( 1 );
 b_c = ( 0 );
@@ -190,9 +191,7 @@ filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 cofs = [vA, vB, vC, vD, vE];
 mA = spdiags(cofs, [0, -1, 1, -n, n] .* -1, num, num)';
 
-% print_system(mA, vR, num);
-
 save("-binary", filename
-    , "mA", "vR"
     , "b_a", "b_b", "b_c", "b_d"
+    , "mA", "vR"
 );
