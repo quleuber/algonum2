@@ -4,7 +4,7 @@
 
 #define RESTART []
 #define MAXIT   num
-#define TOL     1e-6
+#define TOL     1e-9
 
 #define W   (1)
 
