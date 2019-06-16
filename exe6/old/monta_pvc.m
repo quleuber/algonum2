@@ -1,163 +1,209 @@
-function [mA,vR] = monta_pvc(prob, n, m)
-    kappa   = prob.kappa;
-    beta_x  = prob.beta_x;
-    beta_y  = prob.beta_y;
-    gamma   = prob.gamma;
-    f       = prob.f;
+args = argv();
+if length(args) < 2
+    printf("executável de montagem do sistema precisa de 2 parâmetros\n");
+    exit(1);
+endif
 
-    cup     = prob.cond.up;
-    cdown   = prob.cond.down;
-    cright  = prob.cond.right;
-    cleft   = prob.cond.left;
+n = str2num(args{1});
+m = str2num(args{2});
 
-    b_a   = prob.a;
-    b_b   = prob.b;
-    b_c   = prob.c;
-    b_d   = prob.d;
+outfd = "dados";
+mkdir(outfd);
 
-    num = n * m;
-
-    hx = (b_b - b_a) / (n - 1);
-    hy = (b_d - b_c) / (m - 1);
-
-    # % TODO colocar funções do problema em x,y
-    # _a = @(i) 2 * kappa * (hx^-2 + hy^-2) + gamma(i);
-    # _b = @(i) -kappa * (hx^-2) - beta_x(i) / (2*hx);
-    # _c = @(i) -kappa * (hx^-2) + beta_x(i) / (2*hx);
-    # _d = @(i) -kappa * (hy^-2) - beta_y(i) / (2*hy);
-    # _e = @(i) -kappa * (hy^-2) + beta_y(i) / (2*hy);
-
-    mA = sparse(num, num);
-    vR = zeros(num, 1);
-
-    _2hx  = (2*hx);
-    _2hy  = (2*hy);
-    _hx2i = (hx^(-2));
-    _hy2i = (hy^(-2));
-
-                    
-                    
-                        
-                    
-    
-        
-    #   e
-    # b a c
-    #   d
-
-    # 7 8 9
-    # 4 5 6
-    # 1 2 3
-
-    i = 1;
-    x = b_a;
-    y = b_c;
-
-    % 1
-    vR(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-    mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
-    mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
+name = "NAME"
 
 
-    for j = 2 : n-1
-        
-        x = x + hx; 
-        i = i + 1;
+num = n * m; num
 
-        % 2
-        vR(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-        mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
-        mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
-        mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
-    endfor
+hx = (B_B - B_A) / (n - 1);
+hy = (B_D - B_C) / (m - 1);
 
 
-    
-        x = x + hx; 
-        i = i + 1;
+tic;
 
-    % 3
-    vR(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-    mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
-    mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
+mA = sparse(num, num);
+vR = zeros(num, 1);
 
-    for ln = 2 : m-1
-        
-        x = b_a; 
-        y = y + hy; 
-        i = i + 1;
+_2hx  = (2*hx);
+_2hy  = (2*hy);
+_hx2i = (hx^(-2));
+_hy2i = (hy^(-2));
 
-        % 4
-        vR(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-        mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
-        mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
-        mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
+#define D  mA(i, i-n)
+#define B  mA(i, i-1)
+#define A  mA(i, i  )
+#define C  mA(i, i+1)
+#define E  mA(i, i+n)
+#define R  vR(i)
 
-        for j = 2 : n-1
-            
-        x = x + hx; 
-        i = i + 1;
+#define _B  B = Bi;
+#define _D  D = Di;
+#define _A  A = Ai;
+#define _C  C = Ci;
+#define _E  E = Ei;
 
-            % 5
-            vR(i) = f(x,y);
-            mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-            mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
-            mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
-            mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
-            mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
-        endfor
+#define _R  R = F;
 
-        
-        x = x + hx; 
-        i = i + 1;
-    
-        % 6
-        vR(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-        mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
-        mA(i, i+n) = -kappa * (_hy2i) + beta_y(x,y) / (_2hy);
-        mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
+#define INC_PT \
+    x += hx; \
+    i++;
+#define INC_LN \
+    x = B_A; \
+    y += hy; \
+    i++;
 
-    endfor
+#   e
+# b a c
+#   d
 
-    
-        x = b_a; 
-        y = y + hy; 
-        i = i + 1;
+# 7 8 9
+# 4 5 6
+# 1 2 3
 
-    % 7
-    vR(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-    mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
-    mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
+i = 1;
+x = B_A;
+y = B_C;
 
+% 1
+#ifdef REPLC_YD_XD
+    REPLC_YD_XD
+#else
+    _R
+    _A
+    _E
+    _C
+#endif
+AFTER_YD_XD
+
+for j = 2 : n-1
+    INC_PT
+
+    % 2
+    #ifdef REPLC_YD
+        REPLC_YD
+    #else
+        _R
+        _A
+        _E
+        _C
+        _B
+    #endif
+    AFTER_YD
+
+endfor
+
+
+
+INC_PT
+
+% 3
+#ifdef REPLC_YD_XU
+    REPLC_YD_XU
+#else
+    _R
+    _A
+    _E
+    _B
+#endif
+AFTER_YD_XU
+
+for ln = 2 : m-1
+    INC_LN
+
+    % 4
+    #ifdef REPLC_XD
+        REPLC_XD
+    #else
+        _R
+        _A
+        _D
+        _E
+        _C
+    #endif
+    AFTER_XD
 
     for j = 2 : n-1
-        
-        x = x + hx; 
-        i = i + 1;
+        INC_PT
 
-        % 8
-        vR(i) = f(x,y);
-        mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-        mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
-        mA(i, i+1) = -kappa * (_hx2i) + beta_x(x,y) / (_2hx);
-        mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
+        % 5
+        _R
+        _A
+        _D
+        _E
+        _C
+        _B
     endfor
 
+    INC_PT
 
-    
-        x = x + hx; 
-        i = i + 1;
+    % 6
+    #ifdef REPLC_XU
+        REPLC_XU
+    #else
+        _R
+        _A
+        _D
+        _E
+        _B
+    #endif
+    AFTER_XU
 
-    % 9
-    vR(i) = f(x,y);
-    mA(i, i  ) = 2 * kappa * (_hx2i + _hy2i) + gamma(x,y);
-    mA(i, i-n) = -kappa * (_hy2i) - beta_y(x,y) / (_2hy);
-    mA(i, i-1) = -kappa * (_hx2i) - beta_x(x,y) / (_2hx);
+endfor
 
-endfunction
+
+
+INC_LN
+
+% 7
+#ifdef REPLC_YU_XD
+    REPLC_YU_XD
+#else
+    _R
+    _A
+    _D
+    _C
+#endif
+AFTER_YU_XD
+
+
+for j = 2 : n-1
+    INC_PT
+
+    % 8
+    #ifdef REPLC_YU
+        REPLC_YU
+    #else
+        _R
+        _A
+        _D
+        _C
+        _B
+    #endif
+    AFTER_YU
+
+endfor
+
+
+INC_PT
+
+% 9
+#ifdef REPLC_YU_XU
+    REPLC_YU_XU
+#else
+    _R
+    _A
+    _D
+    _B
+#endif
+AFTER_YU_XU
+
+toc;
+
+b_a = B_A;
+b_b = B_B;
+b_c = B_C;
+b_d = B_D;
+
+filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
+
+save("-binary", filename, "mA", "vR", "b_a", "b_b", "b_c", "b_d");

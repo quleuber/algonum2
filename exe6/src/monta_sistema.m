@@ -21,19 +21,25 @@ hy = (B_D - B_C) / (m - 1);
 
 tic;
 
-mA = sparse(num, num);
+vA = zeros(num, 1);
+vB = zeros(num, 1);
+vC = zeros(num, 1);
+vD = zeros(num, 1);
+vE = zeros(num, 1);
 vR = zeros(num, 1);
+
+
 
 _2hx  = (2*hx);
 _2hy  = (2*hy);
 _hx2i = (hx^(-2));
 _hy2i = (hy^(-2));
 
-#define D  mA(i, i-n)
-#define B  mA(i, i-1)
-#define A  mA(i, i  )
-#define C  mA(i, i+1)
-#define E  mA(i, i+n)
+#define D  vD(i)
+#define B  vB(i)
+#define A  vA(i)
+#define C  vC(i)
+#define E  vE(i)
 #define R  vR(i)
 
 #define _B  B = Bi;
@@ -206,4 +212,12 @@ b_d = B_D;
 
 filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 
-save("-binary", filename, "mA", "vR", "b_a", "b_b", "b_c", "b_d");
+cofs = [vA, vB, vC, vD, vE];
+mA = spdiags(cofs, [0, -1, 1, -n, n] .* -1, num, num)';
+
+% print_system(mA, vR, num);
+
+save("-binary", filename
+    , "mA", "vR"
+    , "b_a", "b_b", "b_c", "b_d"
+);

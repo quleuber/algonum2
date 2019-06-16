@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source "common.sh"
 
 for DIM in "${DIMS[@]}"; do

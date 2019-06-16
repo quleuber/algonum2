@@ -36,8 +36,14 @@ hy = (( 1 ) - ( 0 )) / (m - 1);
 
 tic;
 
-mA = sparse(num, num);
+vA = zeros(num, 1);
+vB = zeros(num, 1);
+vC = zeros(num, 1);
+vD = zeros(num, 1);
+vE = zeros(num, 1);
 vR = zeros(num, 1);
+
+
 
 _2hx  = (2*hx);
 _2hy  = (2*hy);
@@ -62,7 +68,7 @@ y = ( 0 );
 
 % 1
     
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
 
 
@@ -73,7 +79,7 @@ for j = 2 : n-1
 
     % 2
             
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
         
 
@@ -87,7 +93,7 @@ endfor
 
 % 3
     
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
 
 
@@ -99,7 +105,7 @@ for ln = 2 : m-1
 
     % 4
             
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
         
 
@@ -110,11 +116,11 @@ for ln = 2 : m-1
 
         % 5
         vR(i) = ( 0 );
-        mA(i, i  ) = (2 * ( 1 ) * (_hx2i + _hy2i) + ( 0 ));
-        mA(i, i-n) = (-( 1 ) * (_hy2i) - ( 0 ) / (_2hy));
-        mA(i, i+n) = (-( 1 ) * (_hy2i) + ( 0 ) / (_2hy));
-        mA(i, i+1) = (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx));
-        mA(i, i-1) = (-( 1 ) * (_hx2i) - ( 0 ) / (_2hx));
+        vA(i) = (2 * ( 1 ) * (_hx2i + _hy2i) + ( 0 ));
+        vD(i) = (-( 1 ) * (_hy2i) - ( 0 ) / (_2hy));
+        vE(i) = (-( 1 ) * (_hy2i) + ( 0 ) / (_2hy));
+        vC(i) = (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx));
+        vB(i) = (-( 1 ) * (_hx2i) - ( 0 ) / (_2hx));
     endfor
 
     
@@ -123,7 +129,7 @@ for ln = 2 : m-1
 
     % 6
             
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
         
 
@@ -138,7 +144,7 @@ endfor
 
 % 7
     
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
 
 
@@ -150,7 +156,7 @@ for j = 2 : n-1
 
     % 8
             
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
         
 
@@ -163,7 +169,7 @@ endfor
 
 % 9
     
-    mA(i, i  ) = 1; 
+    vA(i) = 1; 
     vR(i)  = 5;
 
 
@@ -176,4 +182,12 @@ b_d = ( 1 );
 
 filename = [ outfd "/" name "_" num2str(n) "_" num2str(m) "_sys" ];
 
-save("-binary", filename, "mA", "vR", "b_a", "b_b", "b_c", "b_d");
+cofs = [vA, vB, vC, vD, vE];
+mA = spdiags(cofs, [0, -1, 1, -n, n] .* -1, num, num)';
+
+% print_system(mA, vR, num);
+
+save("-binary", filename
+    , "mA", "vR"
+    , "b_a", "b_b", "b_c", "b_d"
+);
