@@ -238,7 +238,8 @@ u(i) = (1 - (1)) * u(i)  +  (1) / c_a * ( c_r ...
 );
 
 
-if ( norm(u - oldu, inf) <= 1e-6 )
+sc = max(norm(oldu, inf), 1);
+if ( norm(u - oldu, inf) / sc <= 1e-6 )
     break;
 endif
 

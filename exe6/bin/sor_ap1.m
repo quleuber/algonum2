@@ -61,7 +61,7 @@ _hy2i = (hy^(-2));
 # 1 2 3
 
 
-for iter = 1 : min(num, 1000)
+for iter = 1 : min(num, 10000)
 
 oldu = u;
 
@@ -242,7 +242,8 @@ u(i) = (1 - (1)) * u(i)  +  (1) / c_a * ( c_r ...
 );
 
 
-if ( norm(u - oldu, inf) <= 1e-6 )
+sc = max(norm(oldu, inf), 1);
+if ( norm(u - oldu, inf) / sc <= 1e-6 )
     break;
 endif
 

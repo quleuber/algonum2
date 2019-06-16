@@ -273,7 +273,8 @@ OPENCALC
 CLOSECALC
 
 
-if ( norm(u - oldu, inf) <= TOL )
+sc = max(norm(oldu, inf), 1);
+if ( norm(u - oldu, inf) / sc <= TOL )
     break;
 endif
 
