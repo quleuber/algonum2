@@ -2,7 +2,7 @@
 
 #define NAME ap1
 
-#define RESTART []
+#define RESTART 15
 #define MAXIT   num
 #define TOL     1e-6
 

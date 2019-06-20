@@ -37,7 +37,7 @@ infile = ["dados/" name "_sys" ];
 load(infile);
 
 tic;
-[u, flag, relres, iter, resvec] = gmres(mA, vR, [], 1e-6, num);
+[u, flag, relres, iter, resvec] = gmres(mA, vR, 15, 1e-6, num);
 t = toc;
 
 flag

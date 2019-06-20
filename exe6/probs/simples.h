@@ -2,7 +2,7 @@
 
 #define NAME simples
 
-#define RESTART []
+#define RESTART 15
 #define MAXIT   num
 #define TOL     1e-9
 
