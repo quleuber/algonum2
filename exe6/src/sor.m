@@ -178,6 +178,8 @@ for ln = 2 : m-1
         _C
         _B
 
+        SOR_AFTER_MID
+
         OPENCALC
             C_B
             C_D

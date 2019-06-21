@@ -43,4 +43,4 @@ fh = fopen(txtfile, "w");
 fprintf(fh, "t = %f\\n", t);
 fclose(fh);
 
-fprintf("\\n\\n");
+fprintf("\\n");

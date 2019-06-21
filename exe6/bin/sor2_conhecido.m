@@ -13,6 +13,8 @@
 
 
 
+
+
 args = argv();
 if length(args) < 2
     printf("executável de montagem do sistema precisa de 2 parâmetrosn");
@@ -123,6 +125,8 @@ for ln = 2 : m-1
         vC(i) = (-( 1 ) * (_hx2i) + ( 1 ) / (_2hx));
         vB(i) = (-( 1 ) * (_hx2i) - ( 1 ) / (_2hx));
 
+        
+
     endfor
 
 
@@ -181,6 +185,8 @@ endfor
     
     vA(i) = 1; 
     vR(i)  = 0;
+
+
 
 
 

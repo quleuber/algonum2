@@ -34,3 +34,8 @@
 #define AFTER_YD_XU
 #define AFTER_YU_XD
 #define AFTER_YU_XU
+
+#define AFTER_MID
+#define SOR_AFTER_MID
+
+#define AFTER_ALL

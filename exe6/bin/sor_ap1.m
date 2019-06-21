@@ -14,6 +14,8 @@
 
 
 
+
+
 args = argv();
 if length(args) < 2
     printf("executável de montagem do sistema precisa de 2 parâmetrosn");
@@ -151,6 +153,8 @@ for ln = 2 : m-1
         c_e = (-( 1 ) * (_hy2i) + ( 0 ) / (_2hy));
         c_c = (-( 1 ) * (_hx2i) + ( 0 ) / (_2hx));
         c_b = (-( 1 ) * (_hx2i) - ( 0 ) / (_2hx));
+
+        
 
         u(i) = (1 - (1)) * u(i)  +  (1) / c_a * ( c_r ...
 

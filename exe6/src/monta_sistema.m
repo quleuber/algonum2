@@ -138,6 +138,8 @@ for ln = 2 : m-1
         _E
         _C
         _B
+
+        AFTER_MID
     endfor
 
     INC_PT
@@ -202,6 +204,9 @@ INC_PT
     _B
 #endif
 AFTER_YU_XU
+
+
+AFTER_ALL
 
 toc;
 
