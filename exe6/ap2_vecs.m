@@ -31,8 +31,8 @@ ty = linspace(b_c+hy, b_d-hy, m-2);
 
 for ix = 2 : n-1
     for iy = 2 : m-1
-        dxs(iy-1,ix-1) = ( mu(iy+1, ix  ) - mu(iy-1, ix  ) ) / (2*hx); 
-        dys(iy-1,ix-1) = ( mu(iy  , ix+1) - mu(iy  , ix-1) ) / (2*hy);
+        dys(iy-1,ix-1) = - kappa * ( mu(iy+1, ix  ) - mu(iy-1, ix  ) ) / (2*hx); 
+        dxs(iy-1,ix-1) = - kappa * ( mu(iy  , ix+1) - mu(iy  , ix-1) ) / (2*hy);
     endfor
 endfor
 
@@ -41,4 +41,5 @@ size(dys)
 
 quiver(tx, ty, dxs, dys);
 
-grava_grafico([ fullname "_vecf" ], "png");
+plotfd = "plot"; mkdir(plotfd);
+grava_grafico([ plotfd "/" fullname "_vecf" ], "png");
