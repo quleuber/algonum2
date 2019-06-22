@@ -1,3 +1,4 @@
+#!/usr/bin/octave
 graphics_toolkit gnuplot;
 
 args = argv();
@@ -29,7 +30,6 @@ title(strrep(fullname, "_", " "));
 xlabel("x");
 ylabel("y");
 
-plotfd = "plot";
-mkdir(plotfd);
+plotfd = "plot"; mkdir(plotfd);
 grava_grafico([ plotfd "/" fullname ], "png");
 printf("\n");

@@ -1,0 +1,209 @@
+simples_50_50_gmres
+t = 0.284066
+iter =
+
+     1   100
+
+
+simples_50_50_sor
+t = 0.094999
+
+conhecido_50_50_gmres
+t = 0.442299
+iter =
+
+     1   126
+
+
+conhecido_50_50_sor
+t = 253.563944
+iter =  1000
+
+ap1_50_50_gmres
+t = 0.804192
+iter =
+
+     1   167
+
+
+ap1_50_50_sor
+t = 222.260136
+iter =  2457
+
+simples_25_100_gmres
+t = 1.015038
+iter =
+
+     1   182
+
+
+simples_25_100_sor
+t = 0.117603
+
+conhecido_25_100_gmres
+t = 1.038658
+iter =
+
+     1   185
+
+
+conhecido_25_100_sor
+t = 625.793744
+iter =  2500
+
+ap1_25_100_gmres
+t = 2.122778
+iter =
+
+     1   251
+
+
+ap1_25_100_sor
+t = 221.219807
+iter =  2500
+
+simples_100_100_gmres
+t = 3.535207
+iter =
+
+     1   206
+
+
+simples_100_100_sor
+t = 0.394276
+
+conhecido_100_100_gmres
+t = 4.654539
+iter =
+
+     1   255
+
+
+conhecido_100_100_sor
+t = 4808.628538
+iter =  4824
+
+ap1_100_100_gmres
+t = 10.135237
+iter =
+
+     1   332
+
+
+ap1_100_100_sor
+t = 5123.062525
+iter =  8221
+
+simples_200_50_gmres
+t = 10.612367
+iter =
+
+     1   366
+
+
+Não encontrado: simples_200_50_sor
+
+conhecido_200_50_gmres
+t = 12.219725
+iter =
+
+     1   377
+
+
+Não encontrado: conhecido_200_50_sor
+
+ap1_200_50_gmres
+t = 24.322356
+iter =
+
+     1   481
+
+
+Não encontrado: ap1_200_50_sor
+
+simples_200_200_gmres
+t = 8.562471
+iter =
+
+   20   15
+
+
+Não encontrado: simples_200_200_sor
+
+conhecido_200_200_gmres
+t = 19.725390
+iter =
+
+   108    14
+
+
+Não encontrado: conhecido_200_200_sor
+
+ap1_200_200_gmres
+t = 322.812129
+iter =
+
+   1807     14
+
+
+Não encontrado: ap1_200_200_sor
+
+simples_250_250_gmres
+t = 9.349058
+iter =
+
+   11   15
+
+
+Não encontrado: simples_250_250_sor
+
+conhecido_250_250_gmres
+t = 69.078477
+iter =
+
+   198     2
+
+
+Não encontrado: conhecido_250_250_sor
+
+ap1_250_250_gmres
+t = 1484.452461
+iter =
+
+   3387      2
+
+
+Não encontrado: ap1_250_250_sor
+
+simples_500_1000_gmres
+t = 21.674563
+iter =
+
+    7   15
+
+
+conhecido_500_1000_gmres
+t = 10116.355832
+iter =
+
+   3174      3
+
+
+ap1_500_1000_gmres
+t = 89552.942896
+iter =
+
+   43913       8
+
+
+ap2a_101_81_gmres
+t = 16.978882
+iter =
+
+   129    16
+
+
+ap2a_101_81_sor
+t = 2464.370631
+iter =  8181
+
