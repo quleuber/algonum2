@@ -1,6 +1,8 @@
 #!/bin/bash
 source "common.sh"
 
+set -e
+
 for DIM in "${DIMS[@]}"; do
     for NAME in "${NAMES[@]}"; do
         # $RUNNER "octave-cli ./bin/executa_gmres.m $NAME $DIM"

@@ -9,7 +9,7 @@ function doprint {
     fi
     echo $1
     cat "saida/$1.txt"
-    ./print_data.m "saida/$1" "iter"
+    ./print_data.m "saida/$1" "iter" "restart"
     echo
 }
 
@@ -40,6 +40,9 @@ DIM=500_1000
 for NAME in "${NAMES[@]}"; do
     doprint ${NAME}_${DIM}_gmres
 done
+
+doprint ap2a_51_21_gmres
+doprint ap2a_51_21_sor
 
 doprint ap2a_101_81_gmres
 doprint ap2a_101_81_sor

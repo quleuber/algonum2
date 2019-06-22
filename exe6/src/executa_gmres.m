@@ -11,6 +11,7 @@ n = str2num(args{1});
 m = str2num(args{2});
 
 num = n * m
+restart = RESTART;
 
 outfd = "saida";
 mkdir(outfd);
@@ -34,7 +35,7 @@ outname = [outfd "/" name "_gmres"]
 save("-binary", outname,
     "u", "flag", "relres", "iter", "resvec"
     % ,"t"
-    , "name", "n", "m"
+    , "name", "n", "m", "restart"
     , "b_a", "b_b", "b_c", "b_d"  % vem do arquivo de dados
 );
 

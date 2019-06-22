@@ -1,5 +1,5 @@
 #!/usr/bin/octave
-graphics_toolkit gnuplot;
+% graphics_toolkit gnuplot;
 
 args = argv();
 if length(args) < 2
