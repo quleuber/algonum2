@@ -39,7 +39,7 @@ for i_p = 1 : size(probs)(1)
 
         semilogy(resvec);
         tit = [prob " " strrep(dim, "_", "x")];
-        tit = [tit " GMRES - Resíduo Relativo x Iteração"];
+        tit = [tit " GMRES com ILU(0) - Resíduo Relativo x Iteração"];
         title(tit);
         % axis([0 500]);
 
