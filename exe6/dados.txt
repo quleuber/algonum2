@@ -182,6 +182,28 @@ restart =  50
 
 Não encontrado: ap1_500_1000_sor
 
+==> conhecido_1000_1000_gmres <<=
+t = 607.146212
+iter =
+
+   34   38
+
+restart =  50
+
+
+Não encontrado: conhecido_1000_1000_sor
+
+==> ap1_1000_1000_gmres <<=
+t = 934.807969
+iter =
+
+   54   47
+
+restart =  50
+
+
+Não encontrado: ap1_1000_1000_sor
+
 ==> conhecido_500_1000_gmres <<=
 t = 192.622871
 iter =
