@@ -8,8 +8,8 @@ restart =  50
 
 
 ==> conhecido_50_50_sor <<=
-t = 253.563944
-iter =  1000
+t = 205.191235
+iter =  506
 
 
 ==> ap1_50_50_gmres <<=
@@ -22,8 +22,8 @@ restart =  50
 
 
 ==> ap1_50_50_sor <<=
-t = 222.260136
-iter =  2457
+t = 117.921379
+iter =  927
 
 
 ==> conhecido_25_100_gmres <<=
@@ -36,8 +36,8 @@ restart =  50
 
 
 ==> conhecido_25_100_sor <<=
-t = 625.793744
-iter =  2500
+t = 385.023259
+iter =  1017
 
 
 ==> ap1_25_100_gmres <<=
@@ -50,8 +50,8 @@ restart =  50
 
 
 ==> ap1_25_100_sor <<=
-t = 221.219807
-iter =  2500
+t = 241.350867
+iter =  1858
 
 
 ==> conhecido_100_100_gmres <<=
@@ -64,8 +64,8 @@ restart =  50
 
 
 ==> conhecido_100_100_sor <<=
-t = 4808.628538
-iter =  4824
+t = 2858.351755
+iter =  1816
 
 
 ==> ap1_100_100_gmres <<=
@@ -78,8 +78,8 @@ restart =  50
 
 
 ==> ap1_100_100_sor <<=
-t = 5123.062525
-iter =  8221
+t = 1702.201265
+iter =  3205
 
 
 ==> conhecido_200_50_gmres <<=
@@ -91,7 +91,10 @@ iter =
 restart =  50
 
 
-Não encontrado: conhecido_200_50_sor
+==> conhecido_200_50_sor <<=
+t = 5554.055724
+iter =  3599
+
 
 ==> ap1_200_50_gmres <<=
 t = 0.310584
@@ -102,7 +105,10 @@ iter =
 restart =  50
 
 
-Não encontrado: ap1_200_50_sor
+==> ap1_200_50_sor <<=
+t = 2917.185956
+iter =  6158
+
 
 ==> conhecido_200_200_gmres <<=
 t = 3.102684
@@ -113,7 +119,10 @@ iter =
 restart =  50
 
 
-Não encontrado: conhecido_200_200_sor
+==> conhecido_200_200_sor <<=
+t = 37878.336280
+iter =  6223
+
 
 ==> ap1_200_200_gmres <<=
 t = 2.739096
@@ -124,7 +133,10 @@ iter =
 restart =  50
 
 
-Não encontrado: ap1_200_200_sor
+==> ap1_200_200_sor <<=
+t = 19972.905095
+iter =  10541
+
 
 ==> conhecido_250_250_gmres <<=
 t = 6.277870
