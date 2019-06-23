@@ -1,3 +1,7 @@
+#define W       (1)
+#define TOL     (1e-6)
+#define MAXIT   (num)
+#define RESTART 50
 
 #define Ai  (2 * KAPPA * (_hx2i + _hy2i) + GAMMA)
 #define Bi  (-KAPPA * (_hx2i) - BETA_X / (_2hx))

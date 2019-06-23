@@ -14,8 +14,6 @@
 
 
 
-
-
 args = argv();
 if length(args) < 2
     printf("executável de resolução por GMRES precisa de 3 parâmetros\n");
@@ -28,7 +26,7 @@ n = str2num(args{1});
 m = str2num(args{2});
 
 num = n * m
-restart = 15;
+restart = 50
 
 outfd = "saida";
 mkdir(outfd);
@@ -38,8 +36,11 @@ name = [ probname "_" num2str(n) "_" num2str(m) ]
 infile = ["dados/" name "_sys" ];
 load(infile);
 
+opts.type = "nofill";
+[L, U] = ilu(mA, opts);
+
 tic;
-[u, flag, relres, iter, resvec] = gmres(mA, vR, 15, 1e-6, num);
+[u, flag, relres, iter, resvec] = gmres(mA, vR, 50, (1e-6), (num), L, U);
 t = toc;
 
 flag

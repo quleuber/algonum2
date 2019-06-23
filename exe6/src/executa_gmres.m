@@ -11,7 +11,7 @@ n = str2num(args{1});
 m = str2num(args{2});
 
 num = n * m
-restart = RESTART;
+restart = RESTART
 
 outfd = "saida";
 mkdir(outfd);
@@ -21,8 +21,11 @@ name = [ probname "_" num2str(n) "_" num2str(m) ]
 infile = ["dados/" name "_sys" ];
 load(infile);
 
+opts.type = "nofill";
+[L, U] = ilu(mA, opts);
+
 tic;
-[u, flag, relres, iter, resvec] = gmres(mA, vR, RESTART, TOL, MAXIT);
+[u, flag, relres, iter, resvec] = gmres(mA, vR, RESTART, TOL, MAXIT, L, U);
 t = toc;
 
 flag

@@ -2,12 +2,6 @@
 
 #define NAME ap1b
 
-#define RESTART 15
-#define MAXIT   num
-#define TOL     1e-6
-
-#define W   (1)
-
 #define KAPPA   ( 1 )
 #define BETA_X  ( 0 )
 #define BETA_Y  ( 0 )

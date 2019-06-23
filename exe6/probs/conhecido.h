@@ -2,12 +2,6 @@
 
 #define NAME conhecido
 
-#define RESTART 15
-#define MAXIT   num
-#define TOL     1e-6
-
-#define W   (1)
-
 #define KAPPA   ( 1 )
 #define BETA_X  ( 1 )
 #define BETA_Y  ( 20 * y )

@@ -17,8 +17,6 @@
 
 
 
-
-
 args = argv();
 if length(args) < 2
     printf("executável de montagem do sistema precisa de 2 parâmetrosn");
@@ -215,7 +213,7 @@ endfor
 u = zeros(num, 1);
 % oldu = zeros(num, 1);
 
-for iter = 1 : min(num, num)
+for iter = 1 : min(num, (num))
 
 
 oldu = u;
@@ -349,7 +347,7 @@ u(i) = (1 - (1)) * u(i)  +  (1) / vA(i) * ( vR(i) ...
 sc = max(norm(oldu, inf), 1);
 err = norm(u - oldu, inf);
 errrel = err / sc;
-if ( norm(u - oldu, inf) / sc <= 1e-6 )
+if ( norm(u - oldu, inf) / sc <= (1e-6) )
     break;
 endif
 

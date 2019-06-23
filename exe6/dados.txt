@@ -10,24 +10,24 @@ simples_50_50_sor
 t = 0.094999
 
 conhecido_50_50_gmres
-t = 0.186601
+t = 0.058280
 iter =
 
-   16    8
+    1   39
 
-restart =  15
+restart =  500
 
 conhecido_50_50_sor
 t = 253.563944
 iter =  1000
 
 ap1_50_50_gmres
-t = 1.960699
+t = 0.063932
 iter =
 
-   163     2
+    1   43
 
-restart =  15
+restart =  500
 
 ap1_50_50_sor
 t = 222.260136
@@ -45,24 +45,24 @@ simples_25_100_sor
 t = 0.117603
 
 conhecido_25_100_gmres
-t = 0.189457
+t = 0.046806
 iter =
 
-   21   11
+    1   33
 
-restart =  15
+restart =  500
 
 conhecido_25_100_sor
 t = 625.793744
 iter =  2500
 
 ap1_25_100_gmres
-t = 3.716500
+t = 0.054590
 iter =
 
-   285    10
+    1   38
 
-restart =  15
+restart =  500
 
 ap1_25_100_sor
 t = 221.219807
@@ -80,24 +80,24 @@ simples_100_100_sor
 t = 0.394276
 
 conhecido_100_100_gmres
-t = 0.940546
+t = 0.378644
 iter =
 
-   36   15
+    1   77
 
-restart =  15
+restart =  500
 
 conhecido_100_100_sor
 t = 4808.628538
 iter =  4824
 
 ap1_100_100_gmres
-t = 15.273848
+t = 0.380741
 iter =
 
-   536    15
+    1   76
 
-restart =  15
+restart =  500
 
 ap1_100_100_sor
 t = 5123.062525
@@ -114,22 +114,22 @@ restart =  15
 Não encontrado: simples_200_50_sor
 
 conhecido_200_50_gmres
-t = 1.394945
+t = 0.313393
 iter =
 
-   61    6
+    1   68
 
-restart =  15
+restart =  500
 
 Não encontrado: conhecido_200_50_sor
 
 ap1_200_50_gmres
-t = 26.538010
+t = 0.317502
 iter =
 
-   1036     15
+    1   69
 
-restart =  15
+restart =  500
 
 Não encontrado: ap1_200_50_sor
 
@@ -144,22 +144,22 @@ restart =  15
 Não encontrado: simples_200_200_sor
 
 conhecido_200_200_gmres
-t = 10.630965
+t = 4.835644
 iter =
 
-   108    14
+     1   155
 
-restart =  15
+restart =  500
 
 Não encontrado: conhecido_200_200_sor
 
 ap1_200_200_gmres
-t = 174.888750
+t = 4.078555
 iter =
 
-   1807     14
+     1   145
 
-restart =  15
+restart =  500
 
 Não encontrado: ap1_200_200_sor
 
@@ -174,22 +174,22 @@ restart =  15
 Não encontrado: simples_250_250_sor
 
 conhecido_250_250_gmres
-t = 29.571244
+t = 11.094758
 iter =
 
-   198     2
+     1   193
 
-restart =  15
+restart =  500
 
 Não encontrado: conhecido_250_250_sor
 
 ap1_250_250_gmres
-t = 531.718509
+t = 9.922018
 iter =
 
-   3387      2
+     1   179
 
-restart =  15
+restart =  500
 
 Não encontrado: ap1_250_250_sor
 
@@ -215,22 +215,24 @@ iter =
 
 
 ap2a_51_21_gmres
-t = 0.459841
+t = 0.071952
 iter =
 
-   11   50
+    2   30
 
+restart =  36
 
 ap2a_51_21_sor
 t = 43.101232
 iter =  1071
 
 ap2a_101_81_gmres
-t = 16.978882
+t = 0.592390
 iter =
 
-   129    16
+    2   49
 
+restart =  91
 
 ap2a_101_81_sor
 t = 2464.370631
