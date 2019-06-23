@@ -21,8 +21,8 @@ DIMS=(
     "200_50"
     "200_200"
     "250_250"
-    "500_1000"
-    "1000_1000"
+    # "500_1000"
+    # "1000_1000"
 )
 
 NAMES=(
@@ -34,13 +34,8 @@ NAMES=(
 for DIM in "${DIMS[@]}"; do
     for NAME in "${NAMES[@]}"; do
         doprint ${NAME}_${DIM}_gmres
-        doprint ${NAME}_${DIM}_sor
+        # doprint ${NAME}_${DIM}_sor
     done
-done
-
-DIM=500_1000
-for NAME in "${NAMES[@]}"; do
-    doprint ${NAME}_${DIM}_gmres
 done
 
 doprint ap2a_51_21_gmres

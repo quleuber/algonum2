@@ -1,0 +1,117 @@
+==> conhecido_50_50_gmres <<=
+t = 0.227245
+iter =
+
+    4   46
+
+restart =  50
+
+
+==> ap1_50_50_gmres <<=
+t = 165.082559
+iter =
+
+   2500     50
+
+restart =  50
+
+
+==> conhecido_25_100_gmres <<=
+t = 0.467868
+iter =
+
+    6   46
+
+restart =  50
+
+
+==> ap1_25_100_gmres <<=
+t = 172.123405
+iter =
+
+   2500     50
+
+restart =  50
+
+
+==> conhecido_100_100_gmres <<=
+t = 1.439914
+iter =
+
+    9   49
+
+restart =  50
+
+
+==> ap1_100_100_gmres <<=
+t = 1602.506156
+iter =
+
+   10000      50
+
+restart =  50
+
+
+==> conhecido_200_50_gmres <<=
+t = 1.949182
+iter =
+
+   14   28
+
+restart =  50
+
+
+==> ap1_200_50_gmres <<=
+t = 27.237100
+iter =
+
+   178    37
+
+restart =  50
+
+
+==> conhecido_200_200_gmres <<=
+t = 8.775270
+iter =
+
+   17   22
+
+restart =  50
+
+
+==> ap1_200_200_gmres <<=
+t = 138.335276
+iter =
+
+   246    38
+
+restart =  50
+
+
+==> conhecido_250_250_gmres <<=
+t = 22.142456
+iter =
+
+   28    6
+
+restart =  50
+
+
+==> ap1_250_250_gmres <<=
+t = 340.193008
+iter =
+
+   395    17
+
+restart =  50
+
+
+==> conhecido_500_1000_gmres <<=
+t = 906.526530
+iter =
+
+   131    13
+
+restart =  50
+
+
