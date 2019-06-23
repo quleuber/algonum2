@@ -9,7 +9,7 @@ function doprint {
     fi
     echo "==>" $1 "<<="
     cat "saida/$1.txt"
-    ./print_data.m "saida/$1" "iter" "restart"
+    ./print_data.m "saida/$1" "iter" "restart" # "relres"
     echo
     echo
 }

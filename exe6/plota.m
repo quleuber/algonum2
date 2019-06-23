@@ -1,4 +1,5 @@
 #!/usr/bin/octave
+graphics_toolkit fltk;
 % graphics_toolkit gnuplot;
 
 args = argv();
