@@ -1,4 +1,4 @@
-#define W       (1)
+#define W       (1.5)
 #define TOL     (1e-6)
 #define MAXIT   (num)
 #define RESTART 50
