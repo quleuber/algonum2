@@ -1,220 +1,194 @@
-simples_50_50_gmres
-t = 32.523436
-iter =
-
-   2500     15
-
-restart =  15
-
-simples_50_50_sor
-t = 0.094999
-
-conhecido_50_50_gmres
-t = 0.058280
+==> conhecido_50_50_gmres <<=
+t = 0.047992
 iter =
 
     1   39
 
-restart =  500
+restart =  50
 
-conhecido_50_50_sor
+
+==> conhecido_50_50_sor <<=
 t = 253.563944
 iter =  1000
 
-ap1_50_50_gmres
-t = 0.063932
+
+==> ap1_50_50_gmres <<=
+t = 0.056203
 iter =
 
     1   43
 
-restart =  500
+restart =  50
 
-ap1_50_50_sor
+
+==> ap1_50_50_sor <<=
 t = 222.260136
 iter =  2457
 
-simples_25_100_gmres
-t = 0.307853
-iter =
 
-   22    1
-
-restart =  15
-
-simples_25_100_sor
-t = 0.117603
-
-conhecido_25_100_gmres
-t = 0.046806
+==> conhecido_25_100_gmres <<=
+t = 0.035929
 iter =
 
     1   33
 
-restart =  500
+restart =  50
 
-conhecido_25_100_sor
+
+==> conhecido_25_100_sor <<=
 t = 625.793744
 iter =  2500
 
-ap1_25_100_gmres
-t = 0.054590
+
+==> ap1_25_100_gmres <<=
+t = 0.060521
 iter =
 
     1   38
 
-restart =  500
+restart =  50
 
-ap1_25_100_sor
+
+==> ap1_25_100_sor <<=
 t = 221.219807
 iter =  2500
 
-simples_100_100_gmres
-t = 6.976400
+
+==> conhecido_100_100_gmres <<=
+t = 0.353142
 iter =
 
-   176    15
+    2   37
 
-restart =  15
+restart =  50
 
-simples_100_100_sor
-t = 0.394276
 
-conhecido_100_100_gmres
-t = 0.378644
-iter =
-
-    1   77
-
-restart =  500
-
-conhecido_100_100_sor
+==> conhecido_100_100_sor <<=
 t = 4808.628538
 iter =  4824
 
-ap1_100_100_gmres
-t = 0.380741
+
+==> ap1_100_100_gmres <<=
+t = 0.357328
 iter =
 
-    1   76
+   3   3
 
-restart =  500
+restart =  50
 
-ap1_100_100_sor
+
+==> ap1_100_100_sor <<=
 t = 5123.062525
 iter =  8221
 
-simples_200_50_gmres
-t = 0.460652
+
+==> conhecido_200_50_gmres <<=
+t = 0.239447
 iter =
 
-    9   15
+    2   29
 
-restart =  15
+restart =  50
 
-Não encontrado: simples_200_50_sor
-
-conhecido_200_50_gmres
-t = 0.313393
-iter =
-
-    1   68
-
-restart =  500
 
 Não encontrado: conhecido_200_50_sor
 
-ap1_200_50_gmres
-t = 0.317502
+==> ap1_200_50_gmres <<=
+t = 0.310584
 iter =
 
-    1   69
+    2   44
 
-restart =  500
+restart =  50
+
 
 Não encontrado: ap1_200_50_sor
 
-simples_200_200_gmres
-t = 3.556891
+==> conhecido_200_200_gmres <<=
+t = 3.102684
 iter =
 
-   20   15
+    6   23
 
-restart =  15
+restart =  50
 
-Não encontrado: simples_200_200_sor
-
-conhecido_200_200_gmres
-t = 4.835644
-iter =
-
-     1   155
-
-restart =  500
 
 Não encontrado: conhecido_200_200_sor
 
-ap1_200_200_gmres
-t = 4.078555
+==> ap1_200_200_gmres <<=
+t = 2.739096
 iter =
 
-     1   145
+    5   32
 
-restart =  500
+restart =  50
+
 
 Não encontrado: ap1_200_200_sor
 
-simples_250_250_gmres
-t = 3.191663
+==> conhecido_250_250_gmres <<=
+t = 6.277870
 iter =
 
-   11   15
+    7   43
 
-restart =  15
+restart =  50
 
-Não encontrado: simples_250_250_sor
-
-conhecido_250_250_gmres
-t = 11.094758
-iter =
-
-     1   193
-
-restart =  500
 
 Não encontrado: conhecido_250_250_sor
 
-ap1_250_250_gmres
-t = 9.922018
+==> ap1_250_250_gmres <<=
+t = 5.769628
 iter =
 
-     1   179
+    7   27
 
-restart =  500
+restart =  50
+
 
 Não encontrado: ap1_250_250_sor
 
-simples_500_1000_gmres
-t = 21.674563
+==> conhecido_500_1000_gmres <<=
+t = 192.622871
 iter =
 
-    7   15
+   21   49
+
+restart =  50
 
 
-conhecido_500_1000_gmres
-t = 10116.355832
+Não encontrado: conhecido_500_1000_sor
+
+==> ap1_500_1000_gmres <<=
+t = 256.207793
 iter =
 
-   3174      3
+   29   49
+
+restart =  50
 
 
-ap1_500_1000_gmres
-t = 89552.942896
+Não encontrado: ap1_500_1000_sor
+
+==> conhecido_500_1000_gmres <<=
+t = 192.622871
 iter =
 
-   43913       8
+   21   49
+
+restart =  50
 
 
-ap2a_51_21_gmres
+==> ap1_500_1000_gmres <<=
+t = 256.207793
+iter =
+
+   29   49
+
+restart =  50
+
+
+==> ap2a_51_21_gmres <<=
 t = 0.071952
 iter =
 
@@ -222,11 +196,13 @@ iter =
 
 restart =  36
 
-ap2a_51_21_sor
+
+==> ap2a_51_21_sor <<=
 t = 43.101232
 iter =  1071
 
-ap2a_101_81_gmres
+
+==> ap2a_101_81_gmres <<=
 t = 0.592390
 iter =
 
@@ -234,7 +210,9 @@ iter =
 
 restart =  91
 
-ap2a_101_81_sor
+
+==> ap2a_101_81_sor <<=
 t = 2464.370631
 iter =  8181
+
 

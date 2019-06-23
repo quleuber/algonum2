@@ -25,7 +25,7 @@ for DIM in "${DIMS[@]}"; do
         $RUNNER "octave-cli ./bin/sor_$NAME.m $DIM"
         # $RUNNER "octave-cli ./bin/sor2_$NAME.m $DIM"
 
-        DIM_=$(printf "$DIM" | tr " " "_")
-        $RUNNER "./plota.m ${NAME}_${DIM_} sor"
+        # DIM_=$(printf "$DIM" | tr " " "_")
+        # $RUNNER "./plota.m ${NAME}_${DIM_} sor"
     done
 done

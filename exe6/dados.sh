@@ -7,9 +7,10 @@ function doprint {
         echo
         return;
     fi
-    echo $1
+    echo "==>" $1 "<<="
     cat "saida/$1.txt"
     ./print_data.m "saida/$1" "iter" "restart"
+    echo
     echo
 }
 
@@ -20,11 +21,11 @@ DIMS=(
     "200_50"
     "200_200"
     "250_250"
-    # "500_1000"
+    "500_1000"
 )
 
 NAMES=(
-    "simples"
+    # "simples"
     "conhecido"
     "ap1"
 )
