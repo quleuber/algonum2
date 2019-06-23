@@ -22,8 +22,12 @@ ty = linspace(b_c, b_d, m);
 
 tz = reshape(u, n, m)';
 
+z_lo = min(u);
+z_hi = max(u);
+
 mesh (tx, ty, tz);
-axis ([b_a, b_b b_c, b_d]);
+axis ([b_a, b_b b_c, b_d, z_lo, z_hi]);
+
 
 % pause;
 
