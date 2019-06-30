@@ -1,33 +1,32 @@
-function main(lambda = 3)
+function main()
 
-
+lambda = 3.4647;
+lambda = 3;
 
 tol = 1e-7;
 itmax = 100;
 
-% tams = [11 301 1001];
-
-% % 0 a 6
-% lambdas = linspace(0, 6, 2*6+1); 
+tams = [11 301 1001];
 
 % for lambda = lambdas
     % lambda
 
-    % for n = tams
+    for n = tams
+        n
 
-        n = 20;
+        % n = 50;
 
-        % newton(n, lambda, tol, itmax);
+        newton(n, lambda, tol, itmax);
+        grava_grafico([ "plot/" "newton" "_" [num2str(n)] ], "png");
+
         mas(n, lambda, tol, itmax);
+        grava_grafico([ "plot/" "mas" "_" num2str(n) ], "png");
 
-        grava_grafico([num2str(n)], "png"); %num2str(lambda) "_" 
+        printf("\n\n");
 
+    endfor
 
-    % endfor
-    % break;
-
+% break;
 % endfor
-
-
 
 endfunction
