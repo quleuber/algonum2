@@ -3,17 +3,22 @@ met = mas
 r =  0.051340
 Convergencia obtida apos 100 iteracoes
 Resíduo =  0.033386846
-t =  0.35683
+t =  0.30768
 
 met = newton
 Convergencia obtida apos 6 iteracoes
 Resíduo =  0.000000000
-t =  0.11962
+t =  0.062150
 
 met = newtonmod
 Convergencia obtida apos 53 iteracoes
 Resíduo =  0.000000005
-t =  0.12874
+t =  0.11535
+
+met = newtonaprox
+Convergencia obtida apos 16 iteracoes
+Resíduo =  0.000000003
+t =  0.10780
 
 
 
@@ -22,20 +27,46 @@ met = mas
 r =  0.000076250
 Convergencia obtida apos 100 iteracoes
 Resíduo =  0.000075507
-t =  2.7633
+t =  2.4702
 
 met = newton
 Convergencia obtida apos 5 iteracoes
 Resíduo =  0.000000000
-t =  0.27984
+t =  0.23396
 
 met = newtonmod
 Convergencia obtida apos 48 iteracoes
 Resíduo =  0.000000000
-t =  1.1309
+t =  1.3620
+
+met = newtonaprox
+Convergencia obtida apos 6 iteracoes
+Resíduo =  0.000000000
+t =  0.80405
 
 
 
 n =  1001
 met = mas
 r =  0.0000069093
+Convergencia obtida apos 100 iteracoes
+Resíduo =  0.000006889
+t =  9.8622
+
+met = newton
+Convergencia obtida apos 5 iteracoes
+Resíduo =  0.000000000
+t =  0.79986
+
+met = newtonmod
+Convergencia obtida apos 48 iteracoes
+Resíduo =  0.000000000
+t =  4.8633
+
+met = newtonaprox
+Convergencia obtida apos 6 iteracoes
+Resíduo =  0.000000000
+t =  1.9562
+
+
+
