@@ -18,6 +18,7 @@ tams = [11 301 1001];
         tic;
         [x, u, iter, Fu, resvec] = mas(n, lambda, tol, itmax);
         t = toc
+        title([met " : " "n = " num2str(n)])
         grava_grafico([ "plot/" met "_" num2str(n) ], "png");
         semilogy(resvec);
         axis([0 10]);
@@ -28,6 +29,7 @@ tams = [11 301 1001];
         tic
         [x, u, iter, Fu, resvec] = newton(n, lambda, tol, itmax);
         t = toc
+        title([met " : " "n = " num2str(n)])
         grava_grafico([ "plot/" met "_" num2str(n) ], "png");
         semilogy(resvec);
         grava_grafico([ "plot/resvec/" met "_" num2str(n) ], "png");
@@ -37,19 +39,21 @@ tams = [11 301 1001];
         tic
         [x, u, iter, Fu, resvec] = newton_mod(n, lambda, tol, itmax);
         t = toc
+        title([met " : " "n = " num2str(n)])
         grava_grafico([ "plot/" met "_" num2str(n) ], "png");
         semilogy(resvec);
         grava_grafico([ "plot/resvec/" met "_" num2str(n) ], "png");
         printf("\n");
 
-        met = "newtonmod"
-        tic
-        [x, u, iter, Fu, resvec] = newton_aprox(n, lambda, tol, itmax);
-        t = toc
-        grava_grafico([ "plot/" met "_" num2str(n) ], "png");
-        semilogy(resvec);
-        grava_grafico([ "plot/resvec/" met "_" num2str(n) ], "png");
-        printf("\n");
+        % met = "newtonaprox"
+        % tic
+        % [x, u, iter, Fu, resvec] = newton_aprox(n, lambda, tol, itmax);
+        % t = toc
+        % title([met " : " "n = " num2str(n)])
+        % grava_grafico([ "plot/" met "_" num2str(n) ], "png");
+        % semilogy(resvec);
+        % grava_grafico([ "plot/resvec/" met "_" num2str(n) ], "png");
+        % printf("\n");
 
         printf("\n\n");
 
