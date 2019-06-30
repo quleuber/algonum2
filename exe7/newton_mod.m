@@ -1,4 +1,4 @@
-function [x, u, iter, Fu, resvec] = newton(n, lambda, tol, itmax);
+function [x, u, iter, Fu, resvec] = newton_mod(n, lambda, tol, itmax);
 %
 % Aplicação do método de newton para um 
 % problema unidimensional
@@ -21,11 +21,11 @@ function [x, u, iter, Fu, resvec] = newton(n, lambda, tol, itmax);
 
 	% Processo iterativo
 	iter = 0;
+	J0 = jacob(u, h, lambda, n);
 
 	while ((r > delta) && (iter < itmax))
-		J = jacob(u, h, lambda, n);
 		% J s = - Fu;
-		s = J\-Fu;
+		s = J0 \ -Fu;
 		u = u + s;
 		Fu = func(u,x,h,lambda,n);
         r = norm(Fu,inf);

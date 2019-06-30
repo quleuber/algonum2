@@ -1,4 +1,4 @@
-function [x, u, iter, Fu] = mas(n, lambda, tol, itmax)
+function [x, u, iter, Fu, resvec] = mas(n, lambda, tol, itmax)
 
     x = zeros(n,1);
 	h = 1/(n-1);
@@ -9,8 +9,9 @@ function [x, u, iter, Fu] = mas(n, lambda, tol, itmax)
 
     u = zeros(n,1);
 	Fu = func(u, x, h, lambda, n);
-    r = norm(Fu,inf);
+    r = norm(Fu,inf)
     delta = r * tol;
+    resvec = [r];
 
     g = @(x) pi^2 * sin(pi*x) - lambda * exp(sin(pi*x));
     function R = fR(x, u)
@@ -18,7 +19,6 @@ function [x, u, iter, Fu] = mas(n, lambda, tol, itmax)
         % contorno
         i = 2 : n-1;
             R(i) = h^2 * ( g(x(i)) + lambda * exp(u(i)) );
-        
         % contorno
 	endfunction
 
@@ -38,11 +38,12 @@ function [x, u, iter, Fu] = mas(n, lambda, tol, itmax)
         u = M \ R;
         Fu = func(u,x,h,lambda,n);
         r = norm(Fu,inf);
+        resvec(end+1) = r;
 		iter++;
 	endwhile
 
     printf("Convergencia obtida apos %d iteracoes\n",iter);
-    printf("Resíduo =  %f\n",r);
+    printf("Resíduo =  %.9f\n",r);
     plot(x,u);
 
 endfunction
