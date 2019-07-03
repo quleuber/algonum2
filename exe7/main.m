@@ -8,20 +8,20 @@ LAMBDA = 3.4647;
 tol = 1e-7;
 itmax = 100;
 
-tams = [301]; % 11 301 501
+tams = [501]; % 11 301 501
 
 metodos = {
-    % "mas"          @mas;
+    "mas"          @mas;
     "newton"       @newton;
-    % "newtonmod"    @newton_mod;
-    % "newtonaprox"  @newton_aprox;
+    "newtonmod"    @newton_mod;
+    "newtonaprox"  @newton_aprox;
 };
 
-% PARA O GRÁFICO DE DISTÂNCIAS DOS PICOS
-lambdas = linspace(3.46, 3.47, 11);
+% % PARA O GRÁFICO DE DISTÂNCIAS DOS PICOS
+% lambdas = linspace(3.46, 3.47, 11);
 
-% % PARA O GRÁFICO COM VÁRIOS VALORES DE LAMBDA
-% lambdas = linspace(3.39, 3.49, 11);
+% PARA O GRÁFICO COM VÁRIOS VALORES DE LAMBDA
+lambdas = linspace(3.37, 3.47, 11);
 
 for n = tams
     n
@@ -76,20 +76,20 @@ for n = tams
         endfor
         printf("\n");
 
-        % GRÁFICO DE DISTÂNCIAS DOS PICOS
-        semilogy(lambdas, dists);
-        title([metname " - " "n = " num2str(n) " - " "|max(u) - 1| x lambda"]);
-        xlabel("\\lambda");
-        ylabel("|max(u) - 1|");
-        mkdir("plot/lambda_maxu/");
-        grava_grafico([ "plot/lambda_maxu/" metname "_" num2str(n) ], "png");
+        % % GRÁFICO DE DISTÂNCIAS DOS PICOS
+        % semilogy(lambdas, dists);
+        % title([metname " - " "n = " num2str(n) " - " "|max(u) - 1| x lambda"]);
+        % xlabel("\\lambda");
+        % ylabel("|max(u) - 1|");
+        % mkdir("plot/lambda_maxu/");
+        % grava_grafico([ "plot/lambda_maxu/" metname "_" num2str(n) ], "png");
 
-        % % GRÁFICO PARA VÁRIOS VALORES DE LAMBDA
-        % plot(resultados{2:3, :});
-        % legend(legs{:});
-        % title([metname " - " "n = " num2str(n) " - " "Multiplos Lambdas"]);
-        % mkdir("plot/lambdas/");
-        % grava_grafico([ "plot/lambdas/" metname "_" num2str(n) "_" "lambdas" ], "png");
+        % GRÁFICO PARA VÁRIOS VALORES DE LAMBDA
+        plot(resultados{2:3, :});
+        legend(legs{:});
+        title([metname " - " "n = " num2str(n) " - " "Multiplos Lambdas"]);
+        mkdir("plot/lambdas/");
+        grava_grafico([ "plot/lambdas/" metname "_" num2str(n) "_" "lambdas" ], "png");
 
     endfor
     printf("\n");
