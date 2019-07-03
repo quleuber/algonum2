@@ -8,13 +8,13 @@ LAMBDA = 3.4647;
 tol = 1e-7;
 itmax = 100;
 
-tams = [11 301]; % 11 301 1001
+tams = [301]; % 11 301 501
 
 metodos = {
-    "mas"          @mas;
+    % "mas"          @mas;
     "newton"       @newton;
-    "newtonmod"    @newton_mod;
-    "newtonaprox"  @newton_aprox;
+    % "newtonmod"    @newton_mod;
+    % "newtonaprox"  @newton_aprox;
 };
 
 % PARA O GRÁFICO DE DISTÂNCIAS DOS PICOS
@@ -50,7 +50,7 @@ for n = tams
         resultados = {};
         legs = {};
 
-        printf("%9s %9s %9s %9s %9s\n", "lambda", "dist", "t", "iter", "res");
+        printf("%9s  & %9s  & %9s  & %9s  & %12s  \\\\ \n", "Lambda", "dist", "Tempo", "Iter", "Residuo");
 
         for il = 1 : length(lambdas)  % lambda = lambdas
             lambda = lambdas(il);
@@ -72,7 +72,7 @@ for n = tams
             dists(end+1) = dist;
 
             res = resvec(end);
-            printf("%9.4f %9.4f %9.4f %9d %9.4f\n", lambda, dist, t, iter, res);
+            printf("%9.4f  & %9.4f  & %9.4f  & %9d  & %12.4e  \\\\ \n", lambda, dist, t, iter, res);
         endfor
         printf("\n");
 
