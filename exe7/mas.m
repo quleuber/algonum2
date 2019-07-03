@@ -9,7 +9,7 @@ function [x, u, iter, Fu, resvec] = mas(n, lambda, tol, itmax)
 
     u = zeros(n,1);
 	Fu = func(u, x, h, lambda, n);
-    r = norm(Fu,inf)
+    r = norm(Fu,inf);
     delta = r * tol;
     resvec = [r];
 
@@ -42,8 +42,8 @@ function [x, u, iter, Fu, resvec] = mas(n, lambda, tol, itmax)
 		iter++;
 	endwhile
 
-    printf("Convergencia obtida apos %d iteracoes\n",iter);
-    printf("Resíduo =  %.9f\n",r);
+    % printf("Convergencia obtida apos %d iteracoes\n",iter);
+    % printf("Resíduo =  %.9f\n",r);
     plot(x,u);
 
 endfunction

@@ -33,8 +33,8 @@ function [x, u, iter, Fu, resvec] = newton_aprox(n, lambda, tol, itmax);
 		iter++;
 	endwhile
 
-	printf("Convergencia obtida apos %d iteracoes\n",iter);
-	printf("Resíduo =  %.9f\n",r);
+	% printf("Convergencia obtida apos %d iteracoes\n",iter);
+	% printf("Resíduo =  %.9f\n",r);
 	plot(x,u);
 
 endfunction
